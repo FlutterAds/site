@@ -3,6 +3,7 @@ import { defineConfig } from 'rspress/config';
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
+  base: '/site/',
   title: 'FlutterAds',
   description: '让你的 Flutter 应用广告收益翻倍',
   icon: "/flutterads_icon.png",
