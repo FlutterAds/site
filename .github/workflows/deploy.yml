@@ -2,7 +2,7 @@ name: Deploy Rspress site to Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -12,6 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
+  group: ${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -26,7 +27,6 @@ jobs:
       - uses: pnpm/action-setup@v2 # pnpm is optional but recommended, you can also use npm / yarn
         with:
           version: 6
-          cache: pnpm
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
