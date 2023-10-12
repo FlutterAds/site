@@ -3,7 +3,7 @@ pageType: home
 
 hero:
   name: FlutterAds
-  text: 帮你的 Flutter 应用提升广告收益 🚀
+  text: 让你的 Flutter 应用广告收益翻倍 🚀
   tagline: GroMore Pro 版本
   actions:
     - theme: alt
