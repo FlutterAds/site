@@ -12,5 +12,9 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', mode: 'link', content: 'https://github.com/FlutterAds' },
     ],
+    footer: {
+      message: '© 2023 FlutterAds Team. All Rights Reserved.',
+    },
   },
 });
+
