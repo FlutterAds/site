@@ -9,6 +9,7 @@ export default defineConfig({
   icon: "https://raw.githubusercontent.com/FlutterAds/site/master/logo/flutterads_logo_square.png",
   logo: "https://raw.githubusercontent.com/FlutterAds/site/master/logo/flutterads_logo.png",
   themeConfig: {
+    search: false,
     socialLinks: [
       { icon: 'github', mode: 'link', content: 'https://github.com/FlutterAds' },
     ],
