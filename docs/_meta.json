@@ -1,11 +1,10 @@
 [
   {
     "text": "🎯 版本对比",
-    "link": "/vs/",
-    "activeMatch": "/vs/"
+    "link": "start/vs"
   },
   {
     "text": "🧑🏻‍💻 联系我",
-    "link": "https://github.com/FlutterAds/flutter_gromore_ads/blob/pro/README.md"
+    "link": "start//me"
   }
 ]

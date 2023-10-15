@@ -16,6 +16,8 @@ export default defineConfig({
     footer: {
       message: '© 2023 FlutterAds Team. All Rights Reserved.',
     },
+    prevPageText: '上一页',
+    nextPageText: '下一页',
   },
 });
 
