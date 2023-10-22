@@ -1,0 +1,17 @@
+[
+    {
+        "type": "file",
+        "name": "install",
+        "label": "📦 集成安装"
+    },
+    {
+        "type": "file",
+        "name": "api",
+        "label": "🦜 接口说明"
+    },
+    {
+        "type": "file",
+        "name": "faq",
+        "label": "🙋 常见问题"
+    }
+]
