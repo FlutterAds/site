@@ -1,17 +1,18 @@
 [
     {
         "type": "file",
-        "name": "install",
-        "label": "📦 集成安装"
+        "name": "install"
     },
     {
         "type": "file",
-        "name": "api",
-        "label": "🦜 接口说明"
+        "name": "api"
     },
     {
         "type": "file",
-        "name": "faq",
-        "label": "🙋 常见问题"
+        "name": "changelog"
+    },
+    {
+        "type": "file",
+        "name": "faq"
     }
 ]
