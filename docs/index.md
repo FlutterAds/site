@@ -11,7 +11,7 @@ hero:
       link: https://github.com/FlutterAds/flutter_gromore_ads
     - theme: brand
       text: 🏆 Pro 版
-      link: 'start/me'
+      link: 'start/vs'
     
   # image:
   #   src: /flutterads_icon.png
