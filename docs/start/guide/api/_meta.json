@@ -18,5 +18,9 @@
     {
         "type": "file",
         "name": "feed"
+    },
+    {
+        "type": "file",
+        "name": "ads_sdk"
     }
 ]
