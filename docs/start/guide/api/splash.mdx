@@ -1,0 +1,31 @@
+# 📱 开屏广告
+
+:::tip{title="💡 小提示"}
+
+ - 半开屏配置和设计计算略有难度，可参考示例项目中的配置
+ - Pro 版客户，如有问题随时联系我，提供配置指导
+
+:::
+
+## 全开屏
+
+```dart title="example/pages/splash_page.dart"
+/// [posId] 广告位 id
+/// [timeout] 加载超时时间
+FlutterGromoreAds.showSplashAd(
+  posId,
+  timeout: 4.5,
+);
+```
+
+## 半开屏
+
+```dart title="example/pages/splash_page.dart"
+/// [posId] 广告位 id
+/// [logo] 底部 logo 资源名称
+FlutterGromoreAds.showSplashAd(
+  posId,
+  logo: 'flutterads_logo',
+);
+```
+

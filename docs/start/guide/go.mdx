@@ -1,0 +1,73 @@
+# 🦜 快速开始
+
+:::tip{title="💡 小提示"}
+
+ - 参考示例在`flutter_gromore_ads/example` 下，代码标题是参考文件路径，已省略`lib`目录
+ - Pro 版客户，如有问题随时联系我，提供技术支持
+ - 下载体验，扫描下方二维码回复 `Pro`
+
+   <img src="https://raw.githubusercontent.com/yy1300326388/yy1300326388/main/images/gzh/gzh_qrcode.jpeg" width='100' height='100'/>
+
+:::
+
+## 初始化
+
+```dart title="example/main.dart"
+// 导入引用
+import 'package:flutter_gromore_ads/flutter_gromore_ads.dart';
+
+// 封装为 init() 方法
+/// [appId] 应用ID
+FlutterGromoreAds.initAd(appId);
+```
+
+
+## 广告监听
+
+```dart {7} title="example/main.dart"
+// 封装为 setAdEvent() 方法
+FlutterGromoreAds.onEventListener((event) {
+    debugPrint('onEventListener adId:${event.adId} action:${event.action}');
+    if (event is AdErrorEvent) {
+        // 错误事件
+    } else if (event is AdRewardEvent) {
+        // 获得广告激励事件
+    } else if (event is AdEcpmEvent) {
+        // 广告价格信息事件
+    }
+});
+```
+
+## 小示例
+
+```dart {8-10} title="example/main.dart"
+// 确保 Flutter 已准备好
+WidgetsFlutterBinding.ensureInitialized();
+// 设置广告监听
+setAdEvent();
+// 初始化
+init().then((value) {
+    // 初始化成功，展示开屏广告
+    if (value) {
+        FlutterGromoreAds.showSplashAd(posId);
+    }
+});
+```
+
+### 事件列表
+
+|事件|说明|
+|-|-|
+|onAdLoaded|广告加载成功|
+|onAdPresent|广告填充|
+|onAdExposure|广告曝光|
+|onAdClosed|广告关闭|
+|onAdClicked|广告点击|
+|onAdSkip|广告跳过|
+|onAdComplete|广告播放或计时完毕|
+|onAdError|广告错误|
+|onAdReward|获得广告激励|
+|AdEcpmEvent|广告价格信息事件|
+
+
+

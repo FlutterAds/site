@@ -1,0 +1,23 @@
+[
+    {
+        "type": "file",
+        "name": "install"
+    },
+    {
+        "type": "file",
+        "name": "go"
+    },
+    {
+        "type": "dir",
+        "name": "api",
+        "label": "📖 广告接口"
+    },
+    {
+        "type": "file",
+        "name": "changelog"
+    },
+    {
+        "type": "file",
+        "name": "faq"
+    }
+]

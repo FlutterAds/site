@@ -1,4 +1,15 @@
 [
-    "vs",
-    "me"
+    {
+        "type": "file",
+        "name": "vs"
+    },
+    {
+        "type": "dir",
+        "name": "guide",
+        "label": "📖 接入指南"
+    },
+    {
+        "type": "file",
+        "name": "me"
+    }
 ]

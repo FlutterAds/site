@@ -16,6 +16,7 @@ export default defineConfig({
     footer: {
       message: '© 2023 FlutterAds Team. All Rights Reserved.',
     },
+    outlineTitle: '大纲',
     prevPageText: '上一页',
     nextPageText: '下一页',
   },
