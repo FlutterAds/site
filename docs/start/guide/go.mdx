@@ -16,6 +16,7 @@
 // 导入引用
 import 'package:flutter_gromore_ads/flutter_gromore_ads.dart';
 
+// 封装为 init() 方法
 /// [appId] 应用ID
 FlutterGromoreAds.initAd(appId);
 ```
@@ -23,7 +24,8 @@ FlutterGromoreAds.initAd(appId);
 
 ## 广告监听
 
-```dart title="example/main.dart"
+```dart {7} title="example/main.dart"
+// 封装为 setAdEvent() 方法
 FlutterGromoreAds.onEventListener((event) {
     debugPrint('onEventListener adId:${event.adId} action:${event.action}');
     if (event is AdErrorEvent) {
@@ -38,7 +40,7 @@ FlutterGromoreAds.onEventListener((event) {
 
 ## 小示例
 
-```dart title="example/main.dart"
+```dart {8-10} title="example/main.dart"
 // 确保 Flutter 已准备好
 WidgetsFlutterBinding.ensureInitialized();
 // 设置广告监听

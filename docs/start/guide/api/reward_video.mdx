@@ -1,4 +1,47 @@
 # 🏆 激励视频(Pro)
 
+:::tip{title="💡 小提示"}
 
-## 🏆 二次激励视频(Pro)
+ - `二次激励视频` 需在 GroMore 后台配置
+ - Pro 版客户，如有问题随时联系我，提供配置指导
+
+:::
+
+## 展示广告
+
+```dart title="example/main.dart"
+/// [posId] 广告位 id
+/// [customData] 设置服务端验证的自定义信息
+/// [userId] 设置服务端验证的用户信息
+bool result = await FlutterGromoreAds.showRewardVideoAd(
+    posId,
+    customData: 'customData',
+    userId: 'userId',
+);
+```
+
+## 激励事件监听
+
+> 如果在[快速开始](../go)章节跳过了[广告监听](../go#广告监听)，那么可以回去看看注释中的`获得广告激励事件`
+
+```dart title="example/main.dart"
+// 参考类  AdRewardEvent
+// 奖励类型，0:基础奖励 >0:进阶奖励，v3.0.0 新增
+final int rewardType;
+// 奖励是否有效
+final bool rewardVerify;
+// 奖励数量
+final int rewardAmount;
+// 奖励名称
+final String rewardName;
+// 错误码
+final int? errCode;
+// 错误信息
+final String? errMsg;
+// 服务端验证的自定义信息
+final String? customData;
+// 服务端验证的用户信息
+final String? userId;
+```
+
+
