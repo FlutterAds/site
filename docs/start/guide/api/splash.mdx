@@ -1,1 +1,23 @@
 # 📱 开屏广告
+
+## 全开屏
+
+```dart title="example/main.dart"
+/// [posId] 广告位 id
+/// [timeout] 加载超时时间
+FlutterGromoreAds.showSplashAd(
+  posId,
+  timeout: 4.5,
+);
+```
+
+## 半开屏
+
+```dart title="example/main.dart"
+/// [posId] 广告位 id
+/// [logo] 如果传值则展示底部logo
+FlutterGromoreAds.showSplashAd(
+  posId,
+  logo: 'flutterads_logo',
+);
+```
