@@ -5,7 +5,12 @@
     },
     {
         "type": "file",
-        "name": "api"
+        "name": "go"
+    },
+    {
+        "type": "dir",
+        "name": "api",
+        "label": "📖 广告接口"
     },
     {
         "type": "file",

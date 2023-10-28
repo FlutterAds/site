@@ -1,0 +1,22 @@
+[
+    {
+        "type": "file",
+        "name": "splash"
+    },
+    {
+        "type": "file",
+        "name": "insert"
+    },
+    {
+        "type": "file",
+        "name": "banner"
+    },
+    {
+        "type": "file",
+        "name": "reward_video"
+    },
+    {
+        "type": "file",
+        "name": "feed"
+    }
+]
