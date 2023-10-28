@@ -1,1 +1,48 @@
 # 🏆 信息流(Pro)
+
+:::tip{title="💡 小提示"}
+
+ - 宽高设置比例按照在 GroMore 后台的配置来计算
+ - Pro 版客户，如有问题随时联系我，提供配置指导
+
+:::
+
+## 加载广告列表
+
+```dart title="example/main.dart"
+/// [posId] 广告位 id
+/// [width] 宽度
+/// [height] 高度
+/// [count] 获取广告数量，建议 1~3 个
+List<int> feedAdList = await FlutterGromoreAds.loadFeedAd(
+    AdsConfig.feedId,
+    width: 375,
+    height: 128,
+    count: 3,
+  );
+```
+
+## 展示广告
+
+```dart {1,6} title="example/main.dart"
+/// [posId]返回的广告 id，这里不是广告位id
+/// [width]组件的宽度
+/// [height]组件的高度
+/// [show]是否显示
+AdFeedWidget(
+    posId: '${feedAdList[0]}',
+    width: 375,
+    height: 128,
+    show: true,
+  )
+```
+
+## 清除广告
+
+> 当你的广告不再需要使用时，请一定执行清除操作，这里可以是批量清除
+
+```dart {1} title="example/main.dart"
+/// [list] 要清除的广告 id 列表，这里是 feedAdList 中的 id，这里不是广告位id
+bool result = await FlutterGromoreAds.clearFeedAd(feedAdList);
+```
+
