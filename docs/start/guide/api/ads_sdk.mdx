@@ -1,13 +1,108 @@
-# 厂商 SDK 配置
+# 🦺 厂商 SDK 配置
 
 :::tip{title="💡 小提示"}
 
  - 穿山甲基础配置已包含在插件内，广点通、百度、快手等需要按需导入配置
- - Pro 版客户，如 SDK 下载和配置有问题随时联系我，提供集成指导服务
+ - 下面以`广点通`为例，每增加一个厂商都必须重复如下的步骤，否则可能出现广告加载异常等情况
+ - Pro 版客户，如 SDK 下载和配置有问题随时联系我，提供集成指导支持
 
 :::
 
-### Android
+## Android
 
+- [官方文档](https://www.csjplatform.com/union/media/union/download/detail?id=142&docId=27562&osType=android)
 
-### iOS
+### 引入依赖
+
+添加对应厂商的 `Adapter` 和 `SDK` 
+
+```gradle title="example/android/app/build.gradle"
+dependencies {
+    //GroMore_sdk adapter
+    implementation "com.pangle.cn:mediation-gdt-adapter:4.540.1410.1" //gdt adapter
+    implementation 'com.qq.e.union:union:4.540.1410'// 广点通广告 SDK
+    // 这里通过远程仓库导入你也可以按照官方示例中的 `aar` 导入依赖
+}
+```
+
+### 添加配置
+
+> 本插件已将基础配置内置，大幅简化了反锁的配置流程，这里只需要添加厂商特有的配置即可
+
+```xml title="example/android/app/src/main/AndroidManifest.xml"
+<!-- GDT start================== -->
+<!-- targetSDKVersion >= 24时才需要添加这个provider。provider的authorities属性的值为${applicationId}.fileprovider，请开发者根据自己的${applicationId}来设置这个值，例如本例中applicationId为"com.qq.e.union.demo"。 -->
+<provider
+    android:name="com.qq.e.comm.GDTFileProvider"
+    android:authorities="${applicationId}.gdt.fileprovider"
+    android:exported="false"
+    android:grantUriPermissions="true">
+    <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/gdt_file_path" />
+</provider>
+
+<activity
+    android:name="com.qq.e.ads.PortraitADActivity"
+    android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+    android:screenOrientation="portrait" />
+<activity
+    android:name="com.qq.e.ads.LandscapeADActivity"
+    android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+    android:screenOrientation="landscape"
+    tools:replace="android:screenOrientation" />
+
+<!-- 声明SDK所需要的组件 -->
+<service
+    android:name="com.qq.e.comm.DownloadService"
+    android:exported="false" />
+<!-- 请开发者注意字母的大小写，ADActivity，而不是AdActivity -->
+
+<activity
+    android:name="com.qq.e.ads.ADActivity"
+    android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+<!-- GDT end================== -->
+
+<!-- 其他广告配置参考官方文档添加即可================== -->	
+```
+
+### 权限请求
+
+> 必要权限已添加，其他权限`参考示例`和`官方文档`酌情添加即可。
+
+```dart title="example/pages/home_page.dart"
+bool result = await FlutterGromoreAds.requestPermissionIfNecessary;
+```
+
+## iOS
+
+- [官方文档](https://www.csjplatform.com/union/media/union/download/detail?id=143&docId=27487&osType=ios)
+
+### 引入依赖
+
+修改 `ios/Podfile` 引入厂商 `SDK`
+
+```ruby {3,4} title="example/ios/Podfile"
+target 'Runner' do
+  # 广点通/优量汇
+  pod 'CSJMGdtAdapter', '4.14.42.0'
+  pod 'GDTMobSDK','4.14.42'
+```
+
+### 添加配置
+```xml title="example/ios/Runner/Info.plist"
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
+<key>NSUserTrackingUsageDescription</key>
+<string>为了向您提供更优质、安全的个性化服务及内容，需要您允许使用相关权限</string>
+```
+
+### ATT授权（仅 iOS）
+此步骤必须要做，不然上架审核时候会被拒绝。以往广告归因依赖于IDFA。从iOS 14开始，只有在获得用户明确许可的前提下，应用才可以访问用户的IDFA数据并向用户投放定向广告。
+
+```dart title="example/pages/home_page.dart"
+bool result = await FlutterGromoreAds.requestIDFA;
+```

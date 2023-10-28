@@ -9,7 +9,7 @@
 
 ## 加载广告列表
 
-```dart title="example/main.dart"
+```dart title="example/pages/feed_page.dart"
 /// [posId] 广告位 id
 /// [width] 宽度
 /// [height] 高度
@@ -24,7 +24,7 @@ List<int> feedAdList = await FlutterGromoreAds.loadFeedAd(
 
 ## 展示广告
 
-```dart {1,6} title="example/main.dart"
+```dart {1,6} title="example/pages/feed_page.dart"
 /// [posId]返回的广告 id，这里不是广告位id
 /// [width]组件的宽度
 /// [height]组件的高度
@@ -41,7 +41,7 @@ AdFeedWidget(
 
 > 当你的广告不再需要使用时，请一定执行清除操作，这里可以是批量清除
 
-```dart {1} title="example/main.dart"
+```dart {1} title="example/pages/feed_page.dart"
 /// [list] 要清除的广告 id 列表，这里是 feedAdList 中的 id，这里不是广告位id
 bool result = await FlutterGromoreAds.clearFeedAd(feedAdList);
 ```

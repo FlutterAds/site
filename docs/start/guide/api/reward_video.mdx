@@ -9,7 +9,7 @@
 
 ## 展示广告
 
-```dart title="example/main.dart"
+```dart title="example/pages/reward_video_page.dart"
 /// [posId] 广告位 id
 /// [customData] 设置服务端验证的自定义信息
 /// [userId] 设置服务端验证的用户信息
@@ -24,7 +24,7 @@ bool result = await FlutterGromoreAds.showRewardVideoAd(
 
 > 如果在[快速开始](../go)章节跳过了[广告监听](../go#广告监听)，那么可以回去看看注释中的`获得广告激励事件`
 
-```dart title="example/main.dart"
+```dart title="flutter_gromore_ads/event/ad_reward_event.dart"
 // 参考类  AdRewardEvent
 // 奖励类型，0:基础奖励 >0:进阶奖励，v3.0.0 新增
 final int rewardType;
