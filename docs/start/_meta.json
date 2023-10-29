@@ -10,6 +10,10 @@
     },
     {
         "type": "file",
+        "name": "qa"
+    },
+    {
+        "type": "file",
         "name": "me"
     }
 ]

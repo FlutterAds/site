@@ -15,9 +15,5 @@
     {
         "type": "file",
         "name": "changelog"
-    },
-    {
-        "type": "file",
-        "name": "faq"
     }
 ]
