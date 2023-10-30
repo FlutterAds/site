@@ -6,8 +6,8 @@ export default defineConfig({
   base: '/site/',
   title: 'FlutterAds',
   description: '让你的 Flutter 应用广告收益翻倍',
-  icon: "https://raw.githubusercontent.com/FlutterAds/site/master/logo/flutterads_logo_square.png",
-  logo: "https://raw.githubusercontent.com/FlutterAds/site/master/logo/flutterads_logo.png",
+  icon: "/site/icon.png",
+  logo: "/site/logo.png",
   themeConfig: {
     search: false,
     socialLinks: [
