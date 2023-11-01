@@ -1,3 +1,5 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
 # 🙋 常见问题
 
 ## Pro 版购买后是永久使用吗？
@@ -12,7 +14,7 @@
 
 :::tip{title="💡"}
 
-![](https://raw.githubusercontent.com/FlutterAds/site/master/images/gromore/gromore_ads.png)
+<img src={normalizeImagePath('/gromore_ads.png')}/>
 
 - 支持广告平台：穿山甲、优量汇、百度、快手、AdMob、SigmobAd、UnityAds、Mintegral，参考【[GroMore 官网](https://www.csjplatform.com/gromore)】
 - 支持广告类型：开屏、插屏、全屏视频、激励视频、Banner、信息流，参考【[GroMore 官网](https://www.csjplatform.com/basic-monetization)】

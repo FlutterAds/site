@@ -1,3 +1,5 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
 # 🧑🏻‍💻 与我联系
 
 :::tip{title="咨询 Pro 版，请微信与我联系"}
@@ -5,7 +7,8 @@
 ```js
 toponelan
 ```
-<img src="https://raw.githubusercontent.com/FlutterAds/site/master/images/me/wechat.webp" width='220px'/>
+
+<img src={normalizeImagePath('/wechat.webp')} width='220px' />
 
 :::
 
