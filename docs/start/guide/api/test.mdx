@@ -1,0 +1,30 @@
+# 🧪 可视化测试工具
+
+:::warning{title="💡 小提示"}
+
+ - 测试工具一定不能在线上使用，请严格按照示例集成，仅在 `debug` 模式下加载
+ - 为了方便已最大限度的集成到插件中了，iOS 零配置，Android 仅需引入 aar 即可
+ - [参考官方文档](https://www.csjplatform.com/union/media/union/download/detail?id=142&docId=27626&osType=android)
+ - Pro 版客户，如有问题随时联系我，提供配置指导
+
+:::
+
+## Android 配置
+
+> 先将插件中依赖 `android/libs/tools-release.aar` 复制到自己项目下的 `android/app/libs/` 文件夹中，然后配置以下 `debug` 模式下的依赖引用
+
+```dart title="example/android/app/build.gradle"
+dependencies {
+    // 测试工具(这里仅 debug 模式下引用，正式项目用这种模式)
+    debugImplementation files('libs/tools-release.aar')
+}
+```
+
+## 启动可视化测试工具
+
+```dart title="example/pages/home_page.dart"
+FlutterGromoreAds.launchTestTools();
+```
+
+
+

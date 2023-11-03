@@ -22,5 +22,9 @@
     {
         "type": "file",
         "name": "ads_sdk"
+    },
+    {
+        "type": "file",
+        "name": "test"
     }
 ]
