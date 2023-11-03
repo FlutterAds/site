@@ -5,7 +5,7 @@ export default defineConfig({
   root: 'docs',
   base: '/site/',
   title: 'FlutterAds',
-  description: '让你的 Flutter 应用广告收益翻倍',
+  description: 'Flutter GroMore Pro 版，让你的 App 广告收益翻倍',
   icon: "/icon.png",
   logo: "/logo.png",
   themeConfig: {
