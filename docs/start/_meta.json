@@ -1,7 +1,8 @@
 [
     {
         "type": "file",
-        "name": "vs"
+        "name": "vs",
+        "label": "🎯 版本对比"
     },
     {
         "type": "dir",
@@ -10,10 +11,12 @@
     },
     {
         "type": "file",
-        "name": "qa"
+        "name": "qa",
+        "label": "🙋 常见问题"
     },
     {
         "type": "file",
-        "name": "me"
+        "name": "me",
+        "label": "🧑🏻‍💻 与我联系"
     }
 ]

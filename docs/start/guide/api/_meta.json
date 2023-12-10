@@ -1,30 +1,9 @@
 [
-    {
-        "type": "file",
-        "name": "splash"
-    },
-    {
-        "type": "file",
-        "name": "insert"
-    },
-    {
-        "type": "file",
-        "name": "banner"
-    },
-    {
-        "type": "file",
-        "name": "reward_video"
-    },
-    {
-        "type": "file",
-        "name": "feed"
-    },
-    {
-        "type": "file",
-        "name": "ads_sdk"
-    },
-    {
-        "type": "file",
-        "name": "test"
-    }
+    "splash",
+    "insert",
+    "banner",
+    "reward_video",
+    "feed",
+    "ads_sdk",
+    "test"
 ]

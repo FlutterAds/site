@@ -1,11 +1,13 @@
 [
     {
         "type": "file",
-        "name": "install"
+        "name": "install",
+        "label": "📦 集成安装"
     },
     {
         "type": "file",
-        "name": "go"
+        "name": "go",
+        "label": "🦜 快速开始"
     },
     {
         "type": "dir",
@@ -14,6 +16,7 @@
     },
     {
         "type": "file",
-        "name": "changelog"
+        "name": "changelog",
+        "label": "🔖 更新日志"
     }
 ]

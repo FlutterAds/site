@@ -1,7 +1,8 @@
 [
   {
     "text": "🎯 版本对比",
-    "link": "start/vs"
+    "link": "start/vs",
+    "activeMatch": "/vs/"
   },
   {
     "text": "📖 接入指南",
