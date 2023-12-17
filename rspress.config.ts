@@ -14,7 +14,7 @@ export default defineConfig({
       { icon: 'github', mode: 'link', content: 'https://github.com/FlutterAds' },
     ],
     footer: {
-      message: '© 2023 FlutterAds Team. All Rights Reserved.',
+      message: '© FlutterAds Team. All Rights Reserved.',
     },
     outlineTitle: '大纲',
     prevPageText: '上一页',
