@@ -7,7 +7,8 @@
     {
         "type": "dir",
         "name": "guide",
-        "label": "📖 接入指南"
+        "label": "📖 接入指南",
+        "collapsed": true
     },
     {
         "type": "file",
@@ -17,7 +18,8 @@
     {
         "type": "dir",
         "name": "overview",
-        "label": "💹 行业大盘"
+        "label": "💹 行业大盘",
+        "collapsed": true
     },
     {
         "type": "file",
