@@ -20,5 +20,17 @@ export default defineConfig({
     prevPageText: '上一页',
     nextPageText: '下一页',
   },
+  builderConfig: {
+    html: {
+      tags: [
+        {
+          tag: 'script',
+          attrs: {
+            src: 'https://flutterads.github.io/site/js/clarity.js',
+          },
+        }
+      ],
+    },
+  },
 });
 
