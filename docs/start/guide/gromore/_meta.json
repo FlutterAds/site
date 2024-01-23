@@ -1,4 +1,6 @@
 [
+    "install",
+    "go",
     "splash",
     "insert",
     "banner",

@@ -1,18 +1,21 @@
 [
     {
-        "type": "file",
-        "name": "install",
-        "label": "📦 集成安装"
-    },
-    {
-        "type": "file",
-        "name": "go",
-        "label": "🦜 快速开始"
+        "type": "dir",
+        "name": "gromore",
+        "label": "📖 广告变现-GroMore",
+        "collapsed": true
     },
     {
         "type": "dir",
-        "name": "api",
-        "label": "📖 广告接口"
+        "name": "adpark",
+        "label": "📡 广告监测-AdSpark",
+        "collapsed": true
+    },
+    {
+        "type": "dir",
+        "name": "pangrowth",
+        "label": "🎬 内容输出-短剧小视频",
+        "collapsed": true
     },
     {
         "type": "file",

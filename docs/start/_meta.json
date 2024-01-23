@@ -11,15 +11,15 @@
         "collapsed": true
     },
     {
-        "type": "file",
-        "name": "qa",
-        "label": "🙋 常见问题"
-    },
-    {
         "type": "dir",
         "name": "overview",
         "label": "💹 行业大盘",
         "collapsed": true
+    },
+    {
+        "type": "file",
+        "name": "qa",
+        "label": "🙋 常见问题"
     },
     {
         "type": "file",
