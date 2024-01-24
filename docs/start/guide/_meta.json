@@ -7,13 +7,13 @@
     },
     {
         "type": "dir",
-        "name": "adpark",
+        "name": "adspark",
         "label": "📡 广告监测-AdSpark",
         "collapsed": true
     },
     {
         "type": "dir",
-        "name": "pangrowth",
+        "name": "adcontent",
         "label": "🎬 内容输出-短剧小视频",
         "collapsed": true
     },
