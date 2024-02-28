@@ -1,0 +1,99 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 🦜 快速开始
+
+
+:::tip{title="💡 小提示"}
+
+ - 参考示例在`flutter_adcontent/example` 下，代码标题是参考文件路径，已省略`lib`目录
+ - Pro 版客户，如有问题随时联系我，提供技术支持
+ - 购买请[添加微信咨询](/start/me)
+
+:::
+
+## 初始化
+
+```dart title="example/main.dart"
+// 导入引用
+import 'package:flutter_adcontent/flutter_adcontent.dart';
+
+/// [appId] 应用ID
+bool? result= await FlutterAdcontent.init("appid");
+```
+
+## 事件上报
+
+> 激活事件由 SDK 初始化成功后自动触发
+
+### 系统事件
+
+``` dart
+/// 注册事件（系统）
+/// [method] 注册方式
+/// [isSuccess] 是否成功
+FlutterAdspark.registerEvent("wechat", true);
+```
+
+> 其他事件参考[官方文档](#官方文档)
+
+### 自定义事件
+
+``` dart
+/// [eventName] 事件名称
+/// [params] 参数信息
+FlutterAdspark.addEvent(GrownEventType.order, params: {
+                        "orderId": "54323454323",
+                        "amount": 2000,
+                        "count": 1,
+                      });
+```
+
+
+### 常用事件
+
+> 如果够用，则直接使用，不沟通则自己传字符串即可
+
+``` dart
+class GrownEventType {
+  //注册
+  static var register = "grown_attribution_event_register";
+  //付费
+  static var purchase = "grown_attribution_event_purchase";
+  //关键行为
+  static var key_behavior = "grown_attribution_event_key_behavior";
+  //下单
+  static var order = "grown_attribution_event_order";
+  //下载
+  static var download = "grown_attribution_event_download";
+  //应用内拉起
+  static var deeplink = "grown_attribution_event_deelink";
+  //授权
+  static var authorization = "grown_attribution_event_authorization";
+  //广告变现
+  static var ad_purchase = "grown_attribution_event_ad_purchase";
+  //次留
+  static var retention_2d = "grown_attribution_event_retention_2d";
+  //添加购物车
+  static var add_to_cart = "grown_attribution_event_add_to_cart";
+  //表单提交
+  static var form_submit = "grown_attribution_event_form_submit";
+  //拉活
+  static var app_re_active_wake_up =
+      "grown_attribution_event_app_re_active_wake_up";
+  //自定义激活
+  static var custom_activition = "grown_attribution_event_custom_activition";
+  //自定义注册
+  static var custom_register = "grown_attribution_event_custom_register";
+}
+```
+
+## 官方文档
+
+- [穿山甲～Android](https://bytedance.larkoffice.com/wiki/Yh8qwfiiIivBaKkYFYAcZedTnJf)
+- [穿山甲～iOS](https://bytedance.larkoffice.com/wiki/YcpCwVKdFi0VUxk4EAjc6TuJnre)
+- [巨量广告～文档](https://event-manager.oceanengine.com/docs/8650/195169)
+
+
+
+
+
