@@ -13,85 +13,166 @@ import { normalizeImagePath } from 'rspress/runtime';
 
 ## 初始化
 
+:::warning{title="🚧 兼容提示"}
+
+ - 先初始化广告插件，再初始化短剧插件
+ - FlutterAds 所有 Pro 的插件保证兼容性，与其他三方广告插件不保证兼容性
+
+:::
+
 ```dart title="example/main.dart"
 // 导入引用
 import 'package:flutter_adcontent/flutter_adcontent.dart';
+import 'package:flutter_gromore_ads/flutter_gromore_ads.dart';
+
+
 
 /// [appId] 应用ID
-bool? result= await FlutterAdcontent.init("appid");
-```
-
-## 事件上报
-
-> 激活事件由 SDK 初始化成功后自动触发
-
-### 系统事件
-
-``` dart
-/// 注册事件（系统）
-/// [method] 注册方式
-/// [isSuccess] 是否成功
-FlutterAdspark.registerEvent("wechat", true);
-```
-
-> 其他事件参考[官方文档](#官方文档)
-
-### 自定义事件
-
-``` dart
-/// [eventName] 事件名称
-/// [params] 参数信息
-FlutterAdspark.addEvent(GrownEventType.order, params: {
-                        "orderId": "54323454323",
-                        "amount": 2000,
-                        "count": 1,
-                      });
-```
-
-
-### 常用事件
-
-> 如果够用，则直接使用，不沟通则自己传字符串即可
-
-``` dart
-class GrownEventType {
-  //注册
-  static var register = "grown_attribution_event_register";
-  //付费
-  static var purchase = "grown_attribution_event_purchase";
-  //关键行为
-  static var key_behavior = "grown_attribution_event_key_behavior";
-  //下单
-  static var order = "grown_attribution_event_order";
-  //下载
-  static var download = "grown_attribution_event_download";
-  //应用内拉起
-  static var deeplink = "grown_attribution_event_deelink";
-  //授权
-  static var authorization = "grown_attribution_event_authorization";
-  //广告变现
-  static var ad_purchase = "grown_attribution_event_ad_purchase";
-  //次留
-  static var retention_2d = "grown_attribution_event_retention_2d";
-  //添加购物车
-  static var add_to_cart = "grown_attribution_event_add_to_cart";
-  //表单提交
-  static var form_submit = "grown_attribution_event_form_submit";
-  //拉活
-  static var app_re_active_wake_up =
-      "grown_attribution_event_app_re_active_wake_up";
-  //自定义激活
-  static var custom_activition = "grown_attribution_event_custom_activition";
-  //自定义注册
-  static var custom_register = "grown_attribution_event_custom_register";
+bool adResult = await FlutterGromoreAds.initAd(
+  "appid",
+  useMediation: false,
+);
+if (!adResult) {
+  print("初始化穿山甲失败");
+  return;
 }
+// 初始化短剧
+// 将从穿山甲下载的配置文件放到 android/app/src/main/assets 目录下，然后调用初始化方法即可
+bool result = await FlutterAdcontent.init(
+  skitSettingFile: "SDK_Setting_5434881.json",
+);
+print("初始化短剧:$result");
+```
+
+## 打开短剧页面
+
+### 打开短剧聚合页面
+
+``` dart
+/// [showBackBtn] 是否显示返回按钮
+/// [showPageTitle] 是否显示页面标题
+/// [showChangeBtn] 是否显示【换一换】按钮
+/// [detailFree] 详情页免费集数，-1 为 SDK 自己决定
+FlutterAdcontent.showTheaterPage(
+                showBackBtn: true,
+                showPageTitle: true,
+                showChangeBtn: true,
+                detailFree: 5,
+              );
+```
+
+### 打开短剧详情页面
+
+``` dart
+/// [id] 短剧 id
+/// [index] 集数索引，从1开始
+/// [groupId] 组 id，经量传可能影响推荐效果
+/// [detailFree] 详情页免费集数，-1 为 SDK 自己决定
+/// [hideTopInfo] 是否隐藏顶部信息
+/// [setTopOffset] 设置顶部偏移
+/// [hideBottomInfo] 是否隐藏底部信息
+/// [setBottomOffset] 设置底部偏移
+/// [hideRewardDialog] 是否隐藏奖励弹窗
+/// [hideMore] 是否隐藏更多
+/// [hideCellularToast] 是否隐藏流量提示
+/// [hideBack] 是否隐藏返回按钮
+FlutterAdcontent.showDetailPage(
+                id: 2325,
+                index: 1,
+                groupId: "131562",
+                hideTopInfo: false,
+                setTopOffset: 20,
+                detailFree: 5,
+              );
+```
+
+### 打开短剧滑滑流（混排）页面
+
+``` dart
+/// [hideInfo] 是否隐藏短剧标题信息
+/// [hideEnter] 是否隐藏[下一集]按钮
+/// [dramaFree] 混排免费短剧集数，默认 1
+/// [topDramaId] 混排承接的短剧id，默认 -1 ，SDK 自己选择
+/// [detailFree] 详情页免费集数，-1 为 SDK 自己决定
+FlutterAdcontent.showDrawPage(
+                hideInfo: false,
+                hideEnter: false,
+                dramaFree: 2,
+                detailFree: 5,
+              );
+```
+
+## 获取短剧
+
+### 获取所有短剧
+
+``` dart
+/// [page] 页数，从1开始
+/// [count] 每页个数
+/// [order] 按照短剧更新（上线时间）日期排序请求，true正序，false倒序
+List<Drama> list = await FlutterAdcontent.requestAllDrama();
+```
+
+### 获取个性化推荐短剧
+
+``` dart
+/// [page] 页数，从1开始
+/// [count] 每页个数
+List<Drama> list = await FlutterAdcontent.requestAllDramaByRecommend();
+```
+
+### 获取短剧根据短剧 id
+
+``` dart
+/// [dramaIds] 短剧id列表
+List<Drama> list = await FlutterAdcontent.requestDrama([2325]);
+```
+
+### 获取短剧分类
+
+``` dart
+List<String> list = await FlutterAdcontent.requestDramaCategoryList();
+```
+
+### 获取短剧列表根据分类
+
+``` dart
+/// [category] 分类，如"霸总"
+/// [page] 页数，从1开始
+/// [count] 每页个数,不超过20
+List<Drama> list = await FlutterAdcontent.requestDramaByCategory(category: category);
+```
+
+### 搜索短剧
+
+``` dart
+/// [query] 搜索关键词
+/// [isFuzzy] 是否模糊搜索
+/// [page] 页数，从1开始
+/// [count] 每页个数，不超过20
+List<Drama> list = await FlutterAdcontent.searchDrama(query: "重生", isFuzzy: true);
+```
+
+## 历史纪录
+
+### 获取观看历史记录
+
+``` dart
+/// [page] 页数，从1开始，小于1时全量获取
+/// [count] 每页个数，小于1时全量获取
+List<Drama> list = await FlutterAdcontent.getDramaHistory();
+```
+
+### 清除观看历史纪录
+
+``` dart
+List<Drama> list = await FlutterAdcontent.clearDramaHistory();
 ```
 
 ## 官方文档
 
-- [穿山甲～Android](https://bytedance.larkoffice.com/wiki/Yh8qwfiiIivBaKkYFYAcZedTnJf)
-- [穿山甲～iOS](https://bytedance.larkoffice.com/wiki/YcpCwVKdFi0VUxk4EAjc6TuJnre)
-- [巨量广告～文档](https://event-manager.oceanengine.com/docs/8650/195169)
+- [短剧～Android](https://www.csjplatform.com/supportcenter/28146)
+- [短剧～iOS](https://www.csjplatform.com/supportcenter/28165)
 
 
 
