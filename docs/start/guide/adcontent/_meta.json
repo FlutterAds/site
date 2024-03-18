@@ -1,4 +1,7 @@
 [
     "install",
-    "go"
+    "go",
+    "open",
+    "get",
+    "history"
 ]

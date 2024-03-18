@@ -1,0 +1,63 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 🎬 打开短剧
+
+## 介绍
+
+通过打开短剧接口，无需任何自定义开发就可以启动 SDK 内置的短剧页面，快速开启短剧变现。当然也提供了很多定制化参数可供调整。
+
+## 打开短剧聚合页面
+
+``` dart
+/// [showBackBtn] 是否显示返回按钮
+/// [showPageTitle] 是否显示页面标题
+/// [showChangeBtn] 是否显示【换一换】按钮
+/// [detailFree] 详情页免费集数，-1 为 SDK 自己决定
+FlutterAdcontent.showTheaterPage(
+                showBackBtn: true,
+                showPageTitle: true,
+                showChangeBtn: true,
+                detailFree: 5,
+              );
+```
+
+## 打开短剧详情页面
+
+``` dart
+/// [id] 短剧 id
+/// [index] 集数索引，从1开始
+/// [groupId] 组 id，经量传可能影响推荐效果
+/// [detailFree] 详情页免费集数，-1 为 SDK 自己决定
+/// [hideTopInfo] 是否隐藏顶部信息
+/// [setTopOffset] 设置顶部偏移
+/// [hideBottomInfo] 是否隐藏底部信息
+/// [setBottomOffset] 设置底部偏移
+/// [hideRewardDialog] 是否隐藏奖励弹窗
+/// [hideMore] 是否隐藏更多
+/// [hideCellularToast] 是否隐藏流量提示
+/// [hideBack] 是否隐藏返回按钮
+FlutterAdcontent.showDetailPage(
+                id: 2325,
+                index: 1,
+                groupId: "131562",
+                hideTopInfo: false,
+                setTopOffset: 20,
+                detailFree: 5,
+              );
+```
+
+## 打开短剧滑滑流（混排）页面
+
+``` dart
+/// [hideInfo] 是否隐藏短剧标题信息
+/// [hideEnter] 是否隐藏[下一集]按钮
+/// [dramaFree] 混排免费短剧集数，默认 1
+/// [topDramaId] 混排承接的短剧id，默认 -1 ，SDK 自己选择
+/// [detailFree] 详情页免费集数，-1 为 SDK 自己决定
+FlutterAdcontent.showDrawPage(
+                hideInfo: false,
+                hideEnter: false,
+                dramaFree: 2,
+                detailFree: 5,
+              );
+```

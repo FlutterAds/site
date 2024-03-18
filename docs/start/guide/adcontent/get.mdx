@@ -1,0 +1,56 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 🎞 短剧信息
+
+## 介绍
+
+获取到的短剧信息是数据列表形式，可结合自己的业务高度自定义页面布局来展现短剧列表，Flutter 层仅需一套代码。
+
+## 获取所有短剧
+
+``` dart
+/// [page] 页数，从1开始
+/// [count] 每页个数
+/// [order] 按照短剧更新（上线时间）日期排序请求，true正序，false倒序
+List<Drama> list = await FlutterAdcontent.requestAllDrama();
+```
+
+## 获取个性化推荐短剧
+
+``` dart
+/// [page] 页数，从1开始
+/// [count] 每页个数
+List<Drama> list = await FlutterAdcontent.requestAllDramaByRecommend();
+```
+
+## 获取短剧根据短剧 id
+
+``` dart
+/// [dramaIds] 短剧id列表
+List<Drama> list = await FlutterAdcontent.requestDrama([2325]);
+```
+
+## 获取短剧分类
+
+``` dart
+List<String> list = await FlutterAdcontent.requestDramaCategoryList();
+```
+
+## 获取短剧列表根据分类
+
+``` dart
+/// [category] 分类，如"霸总"
+/// [page] 页数，从1开始
+/// [count] 每页个数,不超过20
+List<Drama> list = await FlutterAdcontent.requestDramaByCategory(category: category);
+```
+
+## 搜索短剧
+
+``` dart
+/// [query] 搜索关键词
+/// [isFuzzy] 是否模糊搜索
+/// [page] 页数，从1开始
+/// [count] 每页个数，不超过20
+List<Drama> list = await FlutterAdcontent.searchDrama(query: "重生", isFuzzy: true);
+```
