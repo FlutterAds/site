@@ -1,3 +1,5 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
 # 🏷️ 横幅广告(Banner)
 
 :::tip{title="💡 小提示"}
@@ -8,6 +10,10 @@
  - Pro 版客户，如有问题随时联系我，提供配置指导
 
 :::
+
+## 演示视频
+
+<video src={normalizeImagePath('/imgs/view/video_banner.mp4')}  width='260px' controls />
 
 ```dart title="example/pages/banner_page.dart"
 /// 横幅广告也叫 Banner 广告

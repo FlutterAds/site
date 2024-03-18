@@ -1,3 +1,5 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
 # 🧪 可视化测试助手
 
 :::warning{title="💡 小提示"}
@@ -9,6 +11,17 @@
 
 :::
 
+## 强大作用
+
+很多人会忽略这个功能，可视化测试助手主要有 2 个作用来保证你上线后广告没啥问题。
+
+- GroMore 一般我们会集成多厂商，SDK 兼容性情况一目了然
+- 每个广告位瀑布流中有多个代码位，一般测试展示价格最高的，很难精准控制测试，可视化测试可每个代码位进行测试
+
+## 演示视频
+
+<video src={normalizeImagePath('/imgs/view/video_test.mp4')}  width='260px' controls />
+
 ## Android 配置
 
 > 先将插件中依赖 `android/libs/tools-release.aar` 复制到自己项目下的 `android/app/libs/` 文件夹中，然后配置以下 `debug` 模式下的依赖引用
@@ -19,6 +32,10 @@ dependencies {
     debugImplementation files('libs/tools-release.aar')
 }
 ```
+
+## iOS 配置
+
+无需配置，插件中已默认开发模式下集成，上线不会增加安装包大小
 
 ## 启动可视化测试助手
 
