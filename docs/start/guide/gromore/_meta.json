@@ -6,7 +6,7 @@
     "banner",
     "reward_video",
     "feed",
-    "ads_sdk",
     "test",
-    "preload"
+    "preload",
+    "ads_sdk"
 ]

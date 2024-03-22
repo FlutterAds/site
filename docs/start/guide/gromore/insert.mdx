@@ -14,6 +14,18 @@ import { normalizeImagePath } from 'rspress/runtime';
 
 <video src={normalizeImagePath('/imgs/view/video_insert.mp4')}  width='260px' controls />
 
+## 极速展示
+
+:::warning{title="💡 预缓存功能"}
+
+- 插屏广告一般为视频或各种动效比较多，加上广告瀑布流竞价时间，尤其首次点击插屏广告需要加载很久，用户体验非常的差
+- 如果用户网络再慢一些，会导致加载超时或非常卡顿的情况，浪费广告展示机会从而拿不到收益
+- [预缓存功能](start/guide/gromore/preload)，可以解决此问题，获得非常好的体验和收益，[立即了解](start/guide/gromore/preload)
+
+:::
+
+
+
 ## 全插屏
 
 ```dart title="example/pages/fullscreen_video_page.dart"
