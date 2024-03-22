@@ -10,13 +10,10 @@ export default defineConfig({
   logo: "/logo.png",
   themeConfig: {
     search: false,
-    socialLinks: [
-      { icon: 'github', mode: 'link', content: 'https://github.com/FlutterAds' },
-    ],
     footer: {
       message: '© FlutterAds Team. All Rights Reserved.',
     },
-    outlineTitle: '大纲',
+    outlineTitle: '目录',
     prevPageText: '上一页',
     nextPageText: '下一页',
   },
