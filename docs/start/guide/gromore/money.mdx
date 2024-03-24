@@ -1,0 +1,32 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 💸 收益面板(Pro)
+
+:::tip{title="💡 小提示"}
+
+ - Pro 版插件支持实时获取广告价格，精准确认用户价值或返点比例
+ - 收益面板基于实时广告价格，可以做到统计每条广告的首页和每天的收益
+ - 如果是投流的话，可以设置渠道并且分析每个渠道的用户质量咋样，来决定投流比例
+ - Pro 版客户，如有问题随时联系我
+
+:::
+
+## 演示视频
+
+<video src={normalizeImagePath('/imgs/view/video_money.mp4')}  width='260px' controls />
+
+## 获取实时收益
+
+```dart title="example/pages/ecmp_page.dart"
+// 广告监听
+FlutterGromoreAds.onEventListener((event) {
+    debugPrint('onEventListener adId:${event.adId} action:${event.action}');
+    if (event is AdEcpmEvent) {
+        // 广告价格信息事件
+      debugPrint(
+          'onEventListener ecmp:${event.ecmp} sdkName:${event.sdkName} errMsg:${event.errMsg}');
+    }
+});
+```
+
+
