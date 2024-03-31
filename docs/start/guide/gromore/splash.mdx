@@ -6,6 +6,7 @@ import { normalizeImagePath } from 'rspress/runtime';
 
  - 半开屏配置和设计计算略有难度，可参考示例项目中的配置
  - [参考官方文档](https://www.csjplatform.com/union/media/union/download/detail?id=142&docId=27615&osType=android)
+ - 开屏预加载功能，仅 Pro 版本支持
  - Pro 版客户，如有问题随时联系我，提供配置指导
 
 :::
@@ -27,7 +28,7 @@ FlutterGromoreAds.showSplashAd(
 
 ## 半开屏
 
-```dart title="example/pages/splash_page.dart"
+```dart dart {5} title="example/pages/splash_page.dart"
 /// [posId] 广告位 id
 /// [logo] 底部 logo 资源名称
 FlutterGromoreAds.showSplashAd(
@@ -37,4 +38,41 @@ FlutterGromoreAds.showSplashAd(
 ```
 
 > Logo 图配置请参考示例
+
+## 预加载开屏（Pro）
+
+仅 Pro 版本支持开屏广告的预加载，预加载会增加更好的体验
+
+```dart dart {6} title="example/pages/splash_page.dart"
+/// [posId] 广告位 id
+/// [preload] 是否预加载，不展示
+/// （第 2 次调用则会展示第1次预加载的广告）
+FlutterGromoreAds.showSplashAd(
+  posId,
+  preload: true,
+);
+```
+
+## 展示预加载（Pro）
+
+要在广告事件监听 `AdEventAction.onAdLoaded` 中再次调用展示开屏方法，需要设置预加载 `preload: true`
+
+```dart dart {5-15} title="example/pages/splash_page.dart"
+/// 设置广告监听
+Future<void> setAdEvent() async {
+  FlutterGromoreAds.onEventListener((event) {
+    debugPrint('onEventListener adId:${event.adId} action:${event.action}');
+    if (event.action == AdEventAction.onAdLoaded) {
+      // 广告加载成功
+      // 判断是开屏代码位 id，如果是预加载则展示, preload: true 一定要传
+      if (event.adId == AdsConfig.splashId) {
+        FlutterGromoreAds.showSplashAd(
+          AdsConfig.splashId,
+          logo: AdsConfig.logo,
+          preload: true,
+        );
+      }
+    }
+  });
+```
 
