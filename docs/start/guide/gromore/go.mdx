@@ -17,8 +17,9 @@ import 'package:flutter_gromore_ads/flutter_gromore_ads.dart';
 
 // 封装为 init() 方法
 /// [appId] 应用ID
-/// [useMediation] 是否使用穿山甲聚合,true：使用 GroMore 聚合 false：不使用聚合，仅使用穿山甲
-FlutterGromoreAds.initAd(appId, useMediation:true);
+/// [useMediation] 是否使用穿山甲聚合,true：使用 GroMore 聚合 false：不使用聚合，仅使用穿山甲(Pro 版支持)
+/// [themeStatus] 主题状态，0：普通模式 1：暗黑模式(Pro 版支持)
+FlutterGromoreAds.initAd(appId, useMediation:true, themeStatus:1);
 ```
 
 
