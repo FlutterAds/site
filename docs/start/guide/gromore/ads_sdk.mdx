@@ -20,8 +20,10 @@
 ```gradle title="example/android/app/build.gradle"
 dependencies {
     //GroMore_sdk adapter
-    implementation "com.pangle.cn:mediation-gdt-adapter:4.540.1410.1" //gdt adapter
-    implementation 'com.qq.e.union:union:4.540.1410'// 广点通广告 SDK
+    implementation "com.pangle.cn:mediation-gdt-adapter:4.562.1432.0" //gdt adapter
+    implementation "com.qq.e.union:union:4.562.1432"// 广点通广告 SDK
+    implementation "com.pangle.cn:mediation-ks-adapter:3.3.57.0"//ks adapter
+    implementation files('libs/kssdk-ad-3.3.57.aar')// 快手广告 SDK
     // 这里通过远程仓库导入你也可以按照官方示例中的 `aar` 导入依赖
 }
 ```
@@ -86,8 +88,12 @@ bool result = await FlutterGromoreAds.requestPermissionIfNecessary;
 ```ruby {3,4} title="example/ios/Podfile"
 target 'Runner' do
   # 广点通/优量汇
-  pod 'CSJMGdtAdapter', '4.14.42.0'
-  pod 'GDTMobSDK','4.14.42'
+  pod 'CSJMGdtAdapter', '4.14.50.0'
+  pod 'GDTMobSDK','4.14.50'
+  # 快手
+  pod 'CSJMKsAdapter', '3.3.55.0.0'
+  pod 'KSAdSDK', '3.3.55.0'
+  # 其他厂商按需求添加
 ```
 
 ### 添加配置
@@ -107,3 +113,11 @@ target 'Runner' do
 ```dart title="example/pages/home_page.dart"
 bool result = await FlutterGromoreAds.requestIDFA;
 ```
+
+### 常见问题
+
+:::tip {title="Undefined symbol: _OBJC_CLASS_$_ABUSDKConfig"}
+
+- 按照上方【iOS 引入依赖】或示例中的引入厂商依赖即可解决
+
+:::

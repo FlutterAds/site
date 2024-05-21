@@ -18,6 +18,11 @@
     },
     {
         "type": "file",
+        "name": "promotion/go",
+        "label": "🎉 运营宝典"
+    },
+    {
+        "type": "file",
         "name": "qa",
         "label": "🙋 常见问题"
     },
