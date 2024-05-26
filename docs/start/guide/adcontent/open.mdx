@@ -6,6 +6,11 @@ import { normalizeImagePath } from 'rspress/runtime';
 
 通过打开短剧接口，无需任何自定义开发就可以启动 SDK 内置的短剧页面，快速开启短剧变现。当然也提供了很多定制化参数可供调整。
 
+## 示例图片
+|聚合推荐|聚合剧场|短剧详情|短剧滑滑流|
+|--|--|--|--|
+| <img src={normalizeImagePath('/imgs/adcontent/img_theater_1.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_theater_1.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_detail.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_theater_3.webp')}/>|
+
 ## 打开短剧聚合页面
 
 ``` dart
@@ -45,6 +50,8 @@ FlutterAdcontent.showDetailPage(
                 detailFree: 5,
               );
 ```
+
+> 详情页出了这些参数可实现个性化之外，如果想要更加个性化可以通过修改原生的源码来实现自定义短剧详情。
 
 ## 打开短剧滑滑流（混排）页面
 

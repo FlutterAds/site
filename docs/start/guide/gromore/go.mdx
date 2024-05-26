@@ -39,7 +39,25 @@ FlutterGromoreAds.onEventListener((event) {
 });
 ```
 
+
+## 事件列表
+
+|事件|说明|
+|-|-|
+|onAdLoaded|广告加载成功|
+|onAdPresent|广告填充|
+|onAdExposure|广告曝光|
+|onAdClosed|广告关闭|
+|onAdClicked|广告点击|
+|onAdSkip|广告跳过|
+|onAdComplete|广告播放或计时完毕|
+|onAdError|广告错误|
+|onAdReward|获得广告激励|
+|AdEcpmEvent|广告价格信息事件|
+
 ## 小示例
+
+> 详细示例请参考插件源码中的 `example`
 
 ```dart {8-10} title="example/main.dart"
 // 确保 Flutter 已准备好
@@ -54,21 +72,6 @@ init().then((value) {
     }
 });
 ```
-
-### 事件列表
-
-|事件|说明|
-|-|-|
-|onAdLoaded|广告加载成功|
-|onAdPresent|广告填充|
-|onAdExposure|广告曝光|
-|onAdClosed|广告关闭|
-|onAdClicked|广告点击|
-|onAdSkip|广告跳过|
-|onAdComplete|广告播放或计时完毕|
-|onAdError|广告错误|
-|onAdReward|获得广告激励|
-|AdEcpmEvent|广告价格信息事件|
 
 
 
