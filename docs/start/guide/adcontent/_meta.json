@@ -3,5 +3,6 @@
     "go",
     "open",
     "get",
-    "history"
+    "history",
+    "user"
 ]

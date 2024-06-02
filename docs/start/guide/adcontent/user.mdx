@@ -1,0 +1,47 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 🤖 用户登录
+
+## 介绍
+
+用户模块主要的作用是将平台短剧系统与自己的用户系统进行关联，方便后续的管理以及多设备同步，最后是短剧支付必须是要登录的。
+
+## 示例
+
+<img src={normalizeImagePath('/imgs/adcontent/img_theater_15.webp')} width='240'/>
+
+## 获取签名信息
+
+``` dart
+/// 为了安全，推荐使用服务端签名，不建议使用客户端签名
+/// [key] 秘钥，必须
+/// [nonce] 16为随机字符串，必须，可以通过 getNonce 获取
+/// [time] 时间戳，单位秒，必须
+/// [ouid] 值为开发者用户id（就是自己系统的用户 id）
+String signStr = await FlutterAdcontent.getSignString(key, nonce, time, ouid);
+```
+
+## 进行登录
+
+``` dart
+/// [params] 登录参数
+bool result = await FlutterAdcontent.login(signStr);
+```
+
+## 是否已登录
+
+``` dart
+bool result = await FlutterAdcontent.isLogin();
+```
+
+## 退出登录
+
+``` dart
+bool result = await FlutterAdcontent.logout();
+```
+
+
+
+
+
+
