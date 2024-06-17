@@ -2,5 +2,6 @@
     "install",
     "go",
     "event_system",
-    "event_custom"
+    "event_custom",
+    "test"
 ]

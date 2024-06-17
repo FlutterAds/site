@@ -12,6 +12,10 @@ import { normalizeImagePath } from 'rspress/runtime';
 
 :::
 
+## 示例
+
+<img src={normalizeImagePath('/imgs/adspark/img_01.png')} width='240'/>
+
 ## 初始化
 
 ```dart title="example/main.dart"
@@ -37,7 +41,7 @@ bool? result= await FlutterAdspark.init("appid", "huawei", true);
 FlutterAdspark.registerEvent("wechat", true);
 ```
 
-### 自定义事件
+### 个性事件
 
 ``` dart
 /// [eventName] 事件名称
@@ -53,8 +57,8 @@ FlutterAdspark.addEvent(GrownEventType.order, params: {
 
 > 内置了很多的事件和一些默认的事件名称，详细看下面的文档
 
-- [系统内置事件](/start/guide/adspark/event_system)
-- [自定义事件](/start/guide/adspark/event_custom)
+- [🎯 系统事件](/start/guide/adspark/event_system)
+- [📌 个性事件](/start/guide/adspark/event_custom)
 
 ## 官方文档
 
