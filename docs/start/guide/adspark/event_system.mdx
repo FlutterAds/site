@@ -1,0 +1,171 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 🎯 系统事件
+
+
+:::tip{title="💡 小提示"}
+
+ - 参考示例在`flutter_adspark/example` 下，可以先跑一下示例，看看需要哪些事件
+ - 系统内置事件，也是根据业务需要去调用，参数必须按要求传
+ - Pro 版客户，如有问题随时联系我，提供技术支持
+
+:::
+
+## 👱🏻‍♂️ 账户信息
+
+
+### 注册事件
+
+``` dart
+/// [method] 注册方式
+/// [isSuccess] 是否成功
+FlutterAdspark.registerEvent("wechat", true);
+```
+
+### 登录事件
+
+``` dart
+/// [method] 登录方式
+/// [isSuccess] 是否成功
+FlutterAdspark.loginEvent("wechat", true);
+```
+
+### 设置用户标识
+
+``` dart
+/// [userUniqueId] 设置您自己的账号体系ID或设备ID, 并保证其唯一性
+FlutterAdspark.setUserUniqueID("userId_001");
+```
+
+### 清除用户标识
+
+``` dart
+FlutterAdspark.setUserUniqueID(null);
+```
+
+### 绑定社交账号
+
+``` dart
+/// [accountType] 账户类型
+/// [isSuccess] 是否成功
+FlutterAdspark.accessAccountEvent("wechat", true);
+```
+
+## 🛒 购物支付
+
+### 添加到购物车事件
+
+``` dart
+/// 添加到购物车事件
+/// [contentType] 商品类型
+/// [contentName] 商品名称
+/// [contentId] 商品ID
+/// [contentNum] 商品数量
+/// [isSuccess] 是否成功
+FlutterAdspark.addCartEvent("gift", "flower", "008", 2, true);
+```
+
+### 购买事件
+
+``` dart
+/// [contentType] 商品类型
+/// [contentName] 商品名称
+/// [contentId] 商品ID
+/// [contentNum] 商品数量
+/// [paymentChannel] 支付渠道
+/// [currency] 货币
+/// [isSuccess] 是否成功
+/// [currencyAmount] 货币数量
+FlutterAdspark.purchaseEvent("gift", "flower", "008", 2, "wechat", "¥", true, 99);
+```
+
+### 添加支付渠道
+
+``` dart
+/// [paymentChannel] 支付渠道
+/// [isSuccess] 是否成功
+FlutterAdspark.accessPaymentChannelEvent("wechat", true);
+```
+
+### 结账购买事件
+
+``` dart
+/// [contentType] 商品类型
+/// [contentName] 商品名称
+/// [contentId] 商品ID
+/// [contentNum] 商品数量
+/// [isVirtualCurrency] 是否虚拟货币
+/// [virtualCurrency] 虚拟货币
+/// [currency] 货币
+/// [isSuccess] 是否成功
+/// [currencyAmount] 货币数量
+FlutterAdspark.checkOutEvent("gift", "flower", "008", 2, false, "%%", "¥", true, 99);
+```
+
+### 添加到收藏事件
+
+``` dart
+/// [contentType] 商品类型
+/// [contentName] 商品名称
+/// [contentId] 商品ID
+/// [contentNum] 商品数量
+/// [isSuccess] 是否成功
+FlutterAdspark.addToFavoriteEvent("gift", "flower", "008", 2, true);
+```
+
+### 查看商品事件
+
+``` dart
+/// [contentType] 商品类型
+/// [contentName] 商品名称
+/// [contentId] 商品ID
+FlutterAdspark.viewContentEvent("gift", "flower", "008");
+```
+
+
+## 🎮 游戏关卡
+
+### 完成任务/副本/关卡事件
+
+``` dart
+/// [questId] 任务ID
+/// [questType] 任务类型
+/// [questName] 任务名称
+/// [questNo] 任务编号
+/// [isSuccess] 是否成功
+/// [description] 描述
+FlutterAdspark.questEvent("0001", "新手任务", "新手村砍野猪", 3, true, "其他描述");
+```
+
+### 创建游戏角色事件
+
+``` dart
+/// [gameRoleId] 游戏角色ID
+FlutterAdspark.createGameRoleEvent("11001");
+```
+
+### 更新等级事件
+
+``` dart
+/// [level] 等级
+FlutterAdspark.updateLevelEvent(3);
+```
+
+### 更新等级事件
+
+``` dart
+/// [level] 等级
+FlutterAdspark.updateLevelEvent(3);
+```
+
+
+## 官方文档
+
+- [穿山甲～Android](https://bytedance.larkoffice.com/wiki/Yh8qwfiiIivBaKkYFYAcZedTnJf)
+- [穿山甲～iOS](https://bytedance.larkoffice.com/wiki/YcpCwVKdFi0VUxk4EAjc6TuJnre)
+- [巨量广告～文档](https://event-manager.oceanengine.com/docs/8650/195169)
+
+
+
+
+

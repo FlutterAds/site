@@ -1,0 +1,70 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 📌 自定义事件
+
+
+:::tip{title="💡 小提示"}
+
+ - 参考示例在`flutter_adspark/example` 下，可以先跑一下示例，看看需要哪些事件
+ - 自定义事件，插件内也内置了一些常用的可使用，参数自己决定
+ - Pro 版客户，如有问题随时联系我，提供技术支持
+
+:::
+
+## 自定义事件
+
+事件名称可以使用内置的也可以自己定义，参数是 `Map` 类型根据业务定义即可
+
+### 使用内置名称
+
+``` dart
+/// [eventName] 事件名称
+/// [params] 参数信息
+FlutterAdspark.addEvent(GrownEventType.order, params: {
+                        "orderId": "54323454323",
+                        "amount": 2000,
+                        "count": 1,
+                      });
+```
+
+### 自定义名称
+
+``` dart
+/// [eventName] 事件名称
+/// [params] 参数信息
+FlutterAdspark.addEvent("flutterads_adspark_click", params: {
+                        "name": "178083838",
+                        "amount": 200
+                      });
+```
+
+## 内置事件清单
+
+| 事件        | 调用                                  | 事件名称                             |
+|-------------|---------------------------------------|--------------------------------------|
+| 注册        | GrownEventType.register               | grown_attribution_event_register     |
+| 付费        | GrownEventType.purchase               | grown_attribution_event_purchase     |
+| 关键行为    | GrownEventType.key_behavior           | grown_attribution_event_key_behavior |
+| 下单        | GrownEventType.order                  | grown_attribution_event_order        |
+| 下载        | GrownEventType.download               | grown_attribution_event_download     |
+| 应用内拉起  | GrownEventType.deeplink               | grown_attribution_event_deelink      |
+| 授权        | GrownEventType.authorization          | grown_attribution_event_authorization|
+| 广告变现    | GrownEventType.ad_purchase            | grown_attribution_event_ad_purchase  |
+| 次留        | GrownEventType.retention_2d           | grown_attribution_event_retention_2d |
+| 添加购物车  | GrownEventType.add_to_cart            | grown_attribution_event_add_to_cart  |
+| 表单提交    | GrownEventType.form_submit            | grown_attribution_event_form_submit  |
+| 拉活        | GrownEventType.app_re_active_wake_up  | grown_attribution_event_app_re_active_wake_up |
+| 自定义激活  | GrownEventType.custom_activition      | grown_attribution_event_custom_activition |
+| 自定义注册  | GrownEventType.custom_register        | grown_attribution_event_custom_register |
+
+
+## 官方文档
+
+- [穿山甲～Android](https://bytedance.larkoffice.com/wiki/Yh8qwfiiIivBaKkYFYAcZedTnJf)
+- [穿山甲～iOS](https://bytedance.larkoffice.com/wiki/YcpCwVKdFi0VUxk4EAjc6TuJnre)
+- [巨量广告～文档](https://event-manager.oceanengine.com/docs/8650/195169)
+
+
+
+
+

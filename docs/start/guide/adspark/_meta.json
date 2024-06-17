@@ -1,4 +1,6 @@
 [
     "install",
-    "go"
+    "go",
+    "event_system",
+    "event_custom"
 ]
