@@ -9,7 +9,7 @@
 
 :::
 
-## Android
+## Android 配置
 
 - [官方文档](https://www.csjplatform.com/union/media/union/download/detail?id=142&docId=27562&osType=android)
 
@@ -77,7 +77,7 @@ dependencies {
 bool result = await FlutterGromoreAds.requestPermissionIfNecessary;
 ```
 
-## iOS
+## iOS 配置
 
 - [官方文档](https://www.csjplatform.com/union/media/union/download/detail?id=143&docId=27487&osType=ios)
 
@@ -107,11 +107,99 @@ target 'Runner' do
 <string>为了向您提供更优质、安全的个性化服务及内容，需要您允许使用相关权限</string>
 ```
 
-### ATT授权（仅 iOS）
+### ATT 授权
 此步骤必须要做，不然上架审核时候会被拒绝。以往广告归因依赖于IDFA。从iOS 14开始，只有在获得用户明确许可的前提下，应用才可以访问用户的IDFA数据并向用户投放定向广告。
 
 ```dart title="example/pages/home_page.dart"
 bool result = await FlutterGromoreAds.requestIDFA;
+```
+
+### 隐私清单文件
+
+- 隐私合格约来约严格，越来越规范了，苹果这方面做的比较好，具体查看这个官方文档[《Apple-隐私清单文件》](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files)
+- 如果没有配置过隐私清单文件，建议直接将 `example/ios/Runner/PrivacyInfo.xcprivacy` 复制到你的项目中
+- 如果已经配置过，就需要手动合并一下，因为很多都是相似的内容
+
+``` xml title="example/ios/Runner/PrivacyInfo.xcprivacy"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   PrivacyInfo.xcprivacy
+   Runner
+
+   Created by zero on 2024/6/6.
+   Copyright (c) 2024 FlutterAds. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+	<key>NSPrivacyTracking</key>
+	<true/>
+	<key>NSPrivacyCollectedDataTypes</key>
+    <array>
+            <dict>
+                <key>NSPrivacyCollectedDataType</key>
+                <string>NSPrivacyCollectedDataTypeDeviceID</string>
+                <key>NSPrivacyCollectedDataTypeLinked</key>
+                <false/>
+                <key>NSPrivacyCollectedDataTypeTracking</key>
+                <true/>
+                <key>NSPrivacyCollectedDataTypePurposes</key>
+                <array>
+                    <string>NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising</string>
+                </array>
+            </dict>
+            <dict>
+                <key>NSPrivacyCollectedDataType</key>
+                <string>NSPrivacyCollectedDataTypePerformanceData</string>
+                <key>NSPrivacyCollectedDataTypeLinked</key>
+                <false/>
+                <key>NSPrivacyCollectedDataTypeTracking</key>
+                <false/>
+                <key>NSPrivacyCollectedDataTypePurposes</key>
+                <array>
+                    <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+                </array>
+            </dict>
+        </array>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>35F9.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>C617.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>7D9E.1</string>
+				<string>E174.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
+
 ```
 
 ### 常见问题
