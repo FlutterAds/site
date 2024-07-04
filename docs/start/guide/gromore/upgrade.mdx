@@ -1,0 +1,57 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# ⏫ 更新插件
+
+:::warning{title="💡 小提示"}
+
+ - 插件更新有时需要一些额外的项目配置，具体可以参考 `example` 示例
+ - 详细记录请看[更新日志](start/guide/changelog)
+ - Pro 版客户，如有问题随时联系我，提供技术支持
+
+:::
+
+## GroMore
+
+获取到新插件后解压到项目的 `plugins` 目录下覆盖原来的插件（最好是删除掉原来版本）
+
+### 更新 Android 依赖
+
+- 复制 `example/android/app/build.gradle` 文件中对应 `Adapter` 和 `广告 SDK` 的依赖，覆盖原来项目中的对应依赖。
+- 根据你集成的厂商复制，比如只有优量汇和快手，就仅需复制对应的依赖即可
+- 测试工具，需要复制 `example/android/app/libs/tools-release.aar` 覆盖到你的项目里
+
+```java title="example/android/app/build.gradle"
+dependencies {
+    // 测试工具(这里仅 debug 模式下引用，正式项目用这种模式)
+    debugImplementation files('libs/tools-release.aar')
+    //GroMore_sdk adapter
+    implementation "com.pangle.cn:mediation-gdt-adapter:xxx" //gdt adapter
+    implementation "com.qq.e.union:union:xxx"// 广点通广告 SDK
+    implementation "com.pangle.cn:mediation-ks-adapter:xxx"//ks adapter
+    implementation files('libs/kssdk-ad-xxx.aar')// 快手广告 SDK
+}
+```
+
+### 更新 iOS 依赖
+
+- 复制 `example/ios/Podfile` 文件中对应 `Adapter` 和 `广告 SDK` 的依赖，覆盖原来项目中的对应依赖。
+
+```ruby title="example/ios/Podfile"
+target 'Runner' do
+  # 广点通/优量汇
+  pod 'CSJMGdtAdapter', 'xxx'
+  pod 'GDTMobSDK','xxx'
+  # 快手
+  pod 'CSJMKsAdapter', 'xxx'
+  pod 'KSAdSDK', 'xxx'
+```
+
+## AdSpark
+
+- 直接覆盖旧版本，无需其他任何额外配置
+
+## 短剧小视频
+
+- 直接覆盖旧版本，无需其他任何额外配置
+
+

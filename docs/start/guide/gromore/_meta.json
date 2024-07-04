@@ -9,5 +9,6 @@
     "test",
     "preload",
     "money",
-    "ads_sdk"
+    "ads_sdk",
+    "upgrade"
 ]
