@@ -39,7 +39,7 @@ if (!adResult) {
 // 初始化短剧
 // 将从穿山甲下载的配置文件放到 android/app/src/main/assets 目录下，然后调用初始化方法即可
 bool result = await FlutterAdcontent.init(
-  skitSettingFile: "SDK_Setting_5434881.json",
+  skitSettingFile: "SDK_Setting_5434881", // 不需要传.json
 );
 print("初始化短剧:$result");
 ```
