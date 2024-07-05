@@ -116,7 +116,7 @@ bool result = await FlutterGromoreAds.requestIDFA;
 
 ### 隐私清单文件
 
-- 隐私合格约来约严格，越来越规范了，苹果这方面做的比较好，具体查看这个官方文档[《Apple-隐私清单文件》](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files)
+- 苹果从 2024 年 5 月 1 日开始，上传或更新应用要求有效的隐私清单文件申明，具体查看这个官方文档[《Apple-隐私清单文件》](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files)
 - 如果没有配置过隐私清单文件，建议直接将 `example/ios/Runner/PrivacyInfo.xcprivacy` 复制到你的项目中
 - 如果已经配置过，就需要手动合并一下，因为很多都是相似的内容
 
@@ -127,14 +127,16 @@ bool result = await FlutterGromoreAds.requestIDFA;
    PrivacyInfo.xcprivacy
    Runner
 
-   Created by zero on 2024/6/6.
+   Created by zero on 2024/7/4.
    Copyright (c) 2024 FlutterAds. All rights reserved.
 -->
 <plist version="1.0">
 <dict>
-	<key>NSPrivacyTracking</key>
-	<true/>
-	<key>NSPrivacyCollectedDataTypes</key>
+    <key>NSPrivacyTracking</key>
+    <true/>
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+    <key>NSPrivacyCollectedDataTypes</key>
     <array>
             <dict>
                 <key>NSPrivacyCollectedDataType</key>
@@ -161,45 +163,44 @@ bool result = await FlutterGromoreAds.requestIDFA;
                 </array>
             </dict>
         </array>
-	<key>NSPrivacyAccessedAPITypes</key>
-	<array>
-		<dict>
-			<key>NSPrivacyAccessedAPIType</key>
-			<string>NSPrivacyAccessedAPICategorySystemBootTime</string>
-			<key>NSPrivacyAccessedAPITypeReasons</key>
-			<array>
-				<string>35F9.1</string>
-			</array>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPIType</key>
-			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
-			<key>NSPrivacyAccessedAPITypeReasons</key>
-			<array>
-				<string>C617.1</string>
-			</array>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPIType</key>
-			<string>NSPrivacyAccessedAPICategoryDiskSpace</string>
-			<key>NSPrivacyAccessedAPITypeReasons</key>
-			<array>
-				<string>7D9E.1</string>
-				<string>E174.1</string>
-			</array>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPIType</key>
-			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
-			<key>NSPrivacyAccessedAPITypeReasons</key>
-			<array>
-				<string>CA92.1</string>
-			</array>
-		</dict>
-	</array>
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>35F9.1</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>C617.1</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>7D9E.1</string>
+                <string>E174.1</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>CA92.1</string>
+            </array>
+        </dict>
+    </array>
 </dict>
 </plist>
-
 ```
 
 ### 常见问题

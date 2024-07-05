@@ -1,6 +1,6 @@
 import { normalizeImagePath } from 'rspress/runtime';
 
-# ⏫ 更新插件
+# ⬆️ 更新插件
 
 :::warning{title="💡 小提示"}
 
@@ -12,7 +12,13 @@ import { normalizeImagePath } from 'rspress/runtime';
 
 ## GroMore
 
-获取到新插件后解压到项目的 `plugins` 目录下覆盖原来的插件（最好是删除掉原来版本）
+
+- 获取到新插件后解压到项目的 `plugins` 目录下覆盖原来的插件（最好是删除掉原来版本）
+- 穿山甲 SDK 已默认集成到 GroMore 所以更新插件就自动更新了，仅按需更新其他厂商即可
+- 更新需要 `Adapter` 和 `广告 SDK` 版本对应，一定要用[【🧪 测试助手】](start/guide/gromore/test)做好测试
+
+
+> 下面以项目中添加了【穿山甲、优量汇、快手】这 3 家广告厂商为例
 
 ### 更新 Android 依赖
 
@@ -32,6 +38,8 @@ dependencies {
 }
 ```
 
+> 其他厂商版本号参考 [《Android-官方文档》](https://www.csjplatform.com/union/media/union/download/detail?id=142&docId=27562&osType=android)
+
 ### 更新 iOS 依赖
 
 - 复制 `example/ios/Podfile` 文件中对应 `Adapter` 和 `广告 SDK` 的依赖，覆盖原来项目中的对应依赖。
@@ -45,6 +53,8 @@ target 'Runner' do
   pod 'CSJMKsAdapter', 'xxx'
   pod 'KSAdSDK', 'xxx'
 ```
+
+> 其他厂商版本号参考 [《iOS-官方文档》](https://www.csjplatform.com/union/media/union/download/detail?id=143&docId=27487&osType=ios)
 
 ## AdSpark
 
