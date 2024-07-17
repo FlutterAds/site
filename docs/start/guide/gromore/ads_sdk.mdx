@@ -85,14 +85,15 @@ bool result = await FlutterGromoreAds.requestPermissionIfNecessary;
 
 修改 `ios/Podfile` 引入厂商 `SDK`
 
-```ruby {3,4} title="example/ios/Podfile"
+```ruby {3,4,6,7,8} title="example/ios/Podfile"
 target 'Runner' do
   # 广点通/优量汇
   pod 'CSJMGdtAdapter', 'xxx'
   pod 'GDTMobSDK','xxx'
   # 快手
   pod 'CSJMKsAdapter', 'xxx'
-  pod 'KSAdSDK', 'xxx'
+  pod 'KSAdSDK', '3.3.65.0'
+  # 这里快手 SDK 一定要用 '3.3.65.0' 及以上版本，不然 iOS 隐私清单无法通过
   # 其他厂商按需求添加
 ```
 
@@ -132,73 +133,69 @@ bool result = await FlutterGromoreAds.requestIDFA;
 -->
 <plist version="1.0">
 <dict>
-    <key>NSPrivacyTracking</key>
-    <true/>
-    <key>NSPrivacyTrackingDomains</key>
-    <array/>
-    <key>NSPrivacyCollectedDataTypes</key>
-    <array>
-            <dict>
-                <key>NSPrivacyCollectedDataType</key>
-                <string>NSPrivacyCollectedDataTypeDeviceID</string>
-                <key>NSPrivacyCollectedDataTypeLinked</key>
-                <false/>
-                <key>NSPrivacyCollectedDataTypeTracking</key>
-                <true/>
-                <key>NSPrivacyCollectedDataTypePurposes</key>
-                <array>
-                    <string>NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising</string>
-                </array>
-            </dict>
-            <dict>
-                <key>NSPrivacyCollectedDataType</key>
-                <string>NSPrivacyCollectedDataTypePerformanceData</string>
-                <key>NSPrivacyCollectedDataTypeLinked</key>
-                <false/>
-                <key>NSPrivacyCollectedDataTypeTracking</key>
-                <false/>
-                <key>NSPrivacyCollectedDataTypePurposes</key>
-                <array>
-                    <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
-                </array>
-            </dict>
-        </array>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>35F9.1</string>
-            </array>
-        </dict>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>C617.1</string>
-            </array>
-        </dict>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>7D9E.1</string>
-                <string>E174.1</string>
-            </array>
-        </dict>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>CA92.1</string>
-            </array>
-        </dict>
-    </array>
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypeDeviceID</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<true/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypePerformanceData</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>35F9.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>C617.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>7D9E.1</string>
+				<string>E174.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
 ```
