@@ -10,7 +10,7 @@ export default defineConfig({
   themeConfig: {
     search: false,
     footer: {
-      message: '© FlutterAds Team. All Rights Reserved.',
+      message: '<p><strong>2024 © FlutterAds <a href="https://beian.miit.gov.cn/" target="_blank">陕ICP备2023020053号-2</a></strong></p>',
     },
     outlineTitle: '目录',
     prevPageText: '上一页',
