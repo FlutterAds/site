@@ -3,7 +3,6 @@ import { defineConfig } from 'rspress/config';
 
 export default defineConfig({
   root: 'docs',
-  base: '/site/',
   title: 'FlutterAds',
   description: 'Flutter GroMore Pro 版，让你的 App 广告收益翻倍',
   icon: "/icon.png",
