@@ -1,9 +1,0 @@
-/*! @rspress/core/runtime */
-
-/*! react/jsx-runtime */
-
-/*! @mdx-js/react */
-
-/*! rspress/runtime */
-
-/*! @rspress/runtime */
