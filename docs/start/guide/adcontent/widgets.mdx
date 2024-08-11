@@ -20,7 +20,7 @@ import { normalizeImagePath } from 'rspress/runtime';
 
 ## 短剧组件
 
-``` dart title="example/pages/drama_detail.dart"
+``` dart {19,24-25} title="example/pages/drama_detail.dart"
 /// [controller] 视频控制器
 /// [unlockFlowListener] 解锁流程监听
 /// [videoPlayListener] 视频播放监听器
@@ -39,7 +39,7 @@ import { normalizeImagePath } from 'rspress/runtime';
 /// [hideMore] 是否隐藏更多
 /// [hideCellularToast] 是否隐藏流量提示
 DramaWidget(
-    controller: controller,
+    controller: [播放控制器看下面👇],
     width: 375,
     height: 812,
     id: widget.drama.id,
@@ -61,6 +61,55 @@ public class MainActivity extends FlutterFragmentActivity {
 }
 ```
 :::
+
+## 播放控制器
+
+``` dart {2,6,13}title="example/pages/drama_detail.dart"
+/// 在 initState 中初始化，并传递给组件
+late ProVideoController controller;
+
+@override
+void initState() {
+  controller = ProVideoController();
+}
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+      body: DramaWidget(
+        controller: controller,
+        ...
+        )
+  )
+}
+```
+
+### 暂停&继续
+``` dart title="example/pages/drama_detail.dart"
+controller.pause();
+controller.resume();
+```
+### 设置当前播放集数
+``` dart title="example/pages/drama_detail.dart"
+/// [index] 集数
+controller.setCurrentIndex(currentIndex);
+```
+### 打开选集面板
+``` dart title="example/pages/drama_detail.dart"
+controller.openDramaGallery();
+```
+### 打开更多弹窗
+``` dart title="example/pages/drama_detail.dart"
+controller.openMoreDialog();
+```
+### 解锁剧集
+``` dart title="example/pages/drama_detail.dart"
+/// [id] 短剧ID
+/// [lockSet] 锁集数
+/// [cancel] 是否取消
+controller.unLock(2324,2,false);
+```
+
 
 ## 解锁流程监听
 
@@ -159,6 +208,14 @@ VideoPlayListener(
       onDJXVideoClose: () {
         // 视频关闭
         print('VideoPlayListener onDJXVideoClose');
+      },
+      onDJXSeekTo: (duration) {
+        // 拖动进度
+        print("VideoPlayListener onDJXSeekTo:$duration");
+      },
+      onDurationChange: (duration) {
+        // 播放进度
+        print("VideoPlayListener onDurationChange:$duration");
       },
     )
 ```

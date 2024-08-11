@@ -52,6 +52,31 @@ public class MainActivity extends FlutterFragmentActivity {
 ```
 :::
 
+## 播放控制器
+
+``` dart {2,6,13,20-21}title="example/pages/drama_detail.dart"
+/// 在 initState 中初始化，并传递给组件
+late ProVideoController controller;
+
+@override
+void initState() {
+  controller = ProVideoController();
+}
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+      body: DramaWidget(
+        controller: controller,
+        ...
+        )
+  )
+}
+
+/// 暂停&继续
+controller.pause();
+controller.resume();
+```
 
 ## 打开小视频原生页面
 
