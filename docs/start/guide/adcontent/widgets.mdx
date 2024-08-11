@@ -18,7 +18,6 @@ import { normalizeImagePath } from 'rspress/runtime';
 |--|--|--|--|
 | <img src={normalizeImagePath('/imgs/adcontent/img_detail_widget.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_detail_reward.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_theater_11.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_theater_12.webp')}/>| 
 
-
 ## 短剧组件
 
 ``` dart title="example/pages/drama_detail.dart"
@@ -49,6 +48,19 @@ DramaWidget(
     videoPlayListener: [播放流程监听看下面👇],
   ),
 ```
+
+:::warning{title="💡 小提示"}
+
+ - 要使用组件需修改 Android 启动页面继承 `FlutterFragmentActivity` 
+
+``` java {2,4} title="example/android/app/src/main/java/com/zero/flutter_adcontent_example/MainActivity.java"
+import io.flutter.embedding.android.FlutterActivity;
+import io.flutter.embedding.android.FlutterFragmentActivity;
+
+public class MainActivity extends FlutterFragmentActivity {
+}
+```
+:::
 
 ## 解锁流程监听
 

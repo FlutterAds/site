@@ -39,6 +39,20 @@ VideoWidget(
   )
 ```
 
+:::warning{title="💡 小提示"}
+
+ - 要使用组件需修改 Android 启动页面继承 `FlutterFragmentActivity` 
+
+``` java {2,4} title="example/android/app/src/main/java/com/zero/flutter_adcontent_example/MainActivity.java"
+import io.flutter.embedding.android.FlutterActivity;
+import io.flutter.embedding.android.FlutterFragmentActivity;
+
+public class MainActivity extends FlutterFragmentActivity {
+}
+```
+:::
+
+
 ## 打开小视频原生页面
 
 ``` dart {4,13,22} title="example/pages/my_page.dart"
