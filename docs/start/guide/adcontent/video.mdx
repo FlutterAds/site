@@ -1,0 +1,68 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 📱 小视频详情
+
+## 介绍
+
+小视频提供 2 种模式方式进行展示
+
+- Widget 组件方式可嵌入 Flutter 页面，自由度高
+- 打开原生页面，自由度有限
+
+## 示例图片
+|全屏模式|宫格模式|双列模式|广告展示|
+|--|--|--|--|
+| <img src={normalizeImagePath('/imgs/adcontent/img_video_01.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_video_03.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_video_04.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_video_02.webp')}/>| 
+
+
+## 小视频组件
+
+``` dart title="example/pages/video_page.dart"
+/// [width] View 的宽度
+/// [height] View 的高度
+/// [titleTopMargin] 标题距顶部的距离
+/// [bottomOffset] 内容距底部的距离
+/// [controller] 视频控制器
+/// [channelType] 标题频道类型
+/// [contentType] 展示内容类别
+/// [style] 展示样式（全屏、宫格、双 Feed 流）
+/// [hideChannelName] 隐藏频道名称
+/// [hideFollow] 隐藏关注按钮
+/// [showGuide] 显示引导
+/// [enableRefresh] 开启刷新
+/// [autoPlay] 自动播放
+VideoWidget(
+    width: 375,
+    height: 812,
+    hideFollow: true,
+    style: VideoDrawParams.drawStyleFullscreen,
+  )
+```
+
+## 打开小视频原生页面
+
+``` dart {4,13,22} title="example/pages/my_page.dart"
+/// 基本参数与 Widget 基本一致
+// 打开全屏视频
+FlutterAdcontent.showVideoPage(
+      style: VideoDrawParams.drawStyleFullscreen,
+    );
+
+// 打开宫格模式
+FlutterAdcontent.showVideoPage(
+      hideClose: true,
+      hideChannelName: true,
+      hideFollow: true,
+      channelType: VideoDrawParams.drawChannelTypeRecommend,
+      style: VideoDrawParams.drawStyleGrid,
+    );
+
+// 打开双 Feed 流模式
+FlutterAdcontent.showVideoPage(
+      hideClose: false,
+      hideChannelName: true,
+      hideFollow: true,
+      channelType: VideoDrawParams.drawChannelTypeRecommend,
+      style: VideoDrawParams.drawStyleDoubleFeed,
+    );
+```

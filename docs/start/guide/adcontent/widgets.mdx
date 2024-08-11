@@ -1,0 +1,169 @@
+import { normalizeImagePath } from 'rspress/runtime';
+
+# 📺 短剧详情
+
+## 介绍
+
+越来越多的客户有自定义详情的需求，包括解锁弹窗、标题栏、底部信息栏、选集面板等，所以推出了详情页 Widget 组件，有如下特点：
+
+- 可嵌入任意 Flutter 页面
+- 可进行高度自定义 UI 和逻辑
+- 配合获取[短剧信息](/start/guide/adcontent/get)，可完全由 Flutter 开发一套 2 端都适配了(iOS 和 Android)
+
+## 示例图片
+
+> 下面全是纯 Flutter 自定义页面，可通过体验示例应用
+
+|自定义标题|解锁弹窗|推荐剧场|分类搜索|
+|--|--|--|--|
+| <img src={normalizeImagePath('/imgs/adcontent/img_detail_widget.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_detail_reward.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_theater_11.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_theater_12.webp')}/>| 
+
+
+## 短剧组件
+
+``` dart title="example/pages/drama_detail.dart"
+/// [controller] 视频控制器
+/// [unlockFlowListener] 解锁流程监听
+/// [videoPlayListener] 视频播放监听器
+/// [width] View 的宽度
+/// [height] View 的高度
+/// [id] 短剧 ID
+/// [index] 集数
+/// [groupId] 分组 ID
+/// [detailFree] 免费集数
+/// [unlockCount] 解锁集数
+/// [hideTopInfo] 是否隐藏顶部信息
+/// [setTopOffset] 顶部信息偏移
+/// [hideBottomInfo] 是否隐藏底部信息
+/// [setBottomOffset] 底部信息偏移
+/// [hideRewardDialog] 是否隐藏奖励对话框
+/// [hideMore] 是否隐藏更多
+/// [hideCellularToast] 是否隐藏流量提示
+DramaWidget(
+    controller: controller,
+    width: 375,
+    height: 812,
+    id: widget.drama.id,
+    index: widget.drama.index,
+    unlockFlowListener: [解锁流程监听看下面👇],
+    videoPlayListener: [播放流程监听看下面👇],
+  ),
+```
+
+## 解锁流程监听
+
+``` dart {4,10,12} title="example/pages/drama_detail.dart"
+UnlockFlowListener(
+      unlockFlowStart: (Drama drama) {
+        // 解锁流程开始
+        showUnlockDialog(drama);
+      },
+      unlockFlowEnd: (Drama drama, int? errCode, String? errMsg) {
+        // 解锁流程结束
+        print(
+            'unlockFlowEnd: ${drama.title} errCode:$errCode errMsg:$errMsg');
+        if (errCode != null) {
+          // 解锁失败，返回上一集
+          backIndex();
+        } else {
+          // 解锁成功
+        }
+      },
+    )
+```
+
+### 解锁弹窗自定义
+``` dart {3,8,16} title="example/pages/drama_detail.dart"
+/// 返回上一集
+void backIndex() {
+  controller.setCurrentIndex(currentIndex);
+}
+
+/// 解锁短剧
+Future<void> unLockDrama(Drama drama, bool cancel) async {
+  controller.unLock(drama.id, 2, cancel);
+}
+
+/// 显示 Dialog
+Future<void> showUnlockDialog(Drama drama) async {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) => UnlockDialog(
+      title: '${drama.title} ',
+      indexText: '第${drama.index}集',
+      unlockText: '免费解锁 2 集',
+      tipText: "解锁还能提高红包奖励哦~",
+      onClose: () {
+        Navigator.pop(context);
+        unLockDrama(drama, true);
+      },
+      onUnlock: () {
+        Navigator.pop(context);
+        unLockDrama(drama, false);
+      },
+    ),
+  );
+}
+```
+## 短剧播放监听
+
+``` dart {6-8,14} title="example/pages/drama_detail.dart"
+VideoPlayListener(
+      onDJXPageChange: (Drama drama) {
+        // 视频切换
+        print(
+            'VideoPlayListener onDJXPageChange: ${drama.id}:${drama.title}:${drama.index}');
+        setState(() {
+          newIndex = drama.index;
+        });
+      },
+      onDJXVideoPlay: (Drama drama) {
+        // 视频播放开始
+        print(
+            'VideoPlayListener onDJXVideoPlay: ${drama.id}:${drama.title}:${drama.index}');
+        currentIndex = drama.index;
+      },
+      onDJXVideoPause: (Drama drama) {
+        // 视频暂停
+        print(
+            'VideoPlayListener onDJXVideoPause:  ${drama.id}:${drama.title}:${drama.index}');
+      },
+      onDJXVideoContinue: (Drama drama) {
+        // 视频继续
+        print(
+            'VideoPlayListener onDJXVideoContinue: ${drama.id}:${drama.title}:${drama.index}');
+      },
+      onDJXVideoCompletion: (Drama drama) {
+        // 视频播放完成
+        print(
+            'VideoPlayListener onDJXVideoCompletion: ${drama.id}:${drama.title}:${drama.index}');
+      },
+      onDJXVideoOver: (Drama drama) {
+        // 视频结束
+        print(
+            'VideoPlayListener onDJXVideoOver: ${drama.id}:${drama.title}:${drama.index}');
+      },
+      onDJXVideoClose: () {
+        // 视频关闭
+        print('VideoPlayListener onDJXVideoClose');
+      },
+    )
+```
+
+### 监听场景说明
+
+``` dart {4-6,9-10} title="example/pages/drama_detail.dart"
+VideoPlayListener(
+      onDJXPageChange: (Drama drama) {
+        // 视频切换，这是当前最新一集短剧，用于渲染集数等信息使用
+        setState(() {
+          newIndex = drama.index;
+        });
+      },
+      onDJXVideoPlay: (Drama drama) {
+        // 视频播放开始，未解锁的不会触发，所以这里用于解锁失败返回上一集的记录值
+        currentIndex = drama.index;
+      },
+    )
+```

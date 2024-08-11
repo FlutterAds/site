@@ -7,9 +7,9 @@ import { normalizeImagePath } from 'rspress/runtime';
 通过打开短剧接口，无需任何自定义开发就可以启动 SDK 内置的短剧页面，快速开启短剧变现。当然也提供了很多定制化参数可供调整。
 
 ## 示例图片
-|聚合推荐|聚合剧场|短剧详情|短剧滑滑流|
+|聚合推荐|聚合剧场|短剧滑滑流|短剧详情|
 |--|--|--|--|
-| <img src={normalizeImagePath('/imgs/adcontent/img_theater_1.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_theater_2.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_detail.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_theater_3.webp')}/>|
+| <img src={normalizeImagePath('/imgs/adcontent/img_theater_1.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_theater_2.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_theater_3.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_detail.webp')}/>|
 
 ## 打开短剧聚合页面
 
@@ -25,6 +25,24 @@ FlutterAdcontent.showTheaterPage(
                 detailFree: 5,
               );
 ```
+
+
+## 打开短剧滑滑流（混排）页面
+
+``` dart
+/// [hideInfo] 是否隐藏短剧标题信息
+/// [hideEnter] 是否隐藏[下一集]按钮
+/// [dramaFree] 混排免费短剧集数，默认 1
+/// [topDramaId] 混排承接的短剧id，默认 -1 ，SDK 自己选择
+/// [detailFree] 详情页免费集数，-1 为 SDK 自己决定
+FlutterAdcontent.showDrawPage(
+                hideInfo: false,
+                hideEnter: false,
+                dramaFree: 2,
+                detailFree: 5,
+              );
+```
+
 
 ## 打开短剧详情页面
 
@@ -51,20 +69,4 @@ FlutterAdcontent.showDetailPage(
               );
 ```
 
-> 详情页出了这些参数可实现个性化之外，如果想要更加个性化可以通过修改原生的源码来实现自定义短剧详情。
-
-## 打开短剧滑滑流（混排）页面
-
-``` dart
-/// [hideInfo] 是否隐藏短剧标题信息
-/// [hideEnter] 是否隐藏[下一集]按钮
-/// [dramaFree] 混排免费短剧集数，默认 1
-/// [topDramaId] 混排承接的短剧id，默认 -1 ，SDK 自己选择
-/// [detailFree] 详情页免费集数，-1 为 SDK 自己决定
-FlutterAdcontent.showDrawPage(
-                hideInfo: false,
-                hideEnter: false,
-                dramaFree: 2,
-                detailFree: 5,
-              );
-```
+> 详情页出了这些参数可实现个性化之外，如果想要自定义短剧详情，可以使用[短剧详情 Widget 组件](/start/guide/adcontent/widgets)来实现

@@ -15,7 +15,8 @@ import { normalizeImagePath } from 'rspress/runtime';
 
 :::warning{title="🚧 兼容提示"}
 
- - 先初始化广告插件，再初始化短剧插件
+ - 先初始化广告插件，再初始化内容插件（短剧和小视频）
+ - 所有广告相关事件都会集中统一到 GroMore 事件回调中
  - FlutterAds 所有 Pro 的插件保证兼容性，与其他插件不保证兼容性
 
 :::
@@ -25,23 +26,47 @@ import { normalizeImagePath } from 'rspress/runtime';
 import 'package:flutter_adcontent/flutter_adcontent.dart';
 import 'package:flutter_gromore_ads/flutter_gromore_ads.dart';
 
-
-
-/// [appId] 应用ID
+// 事件监听
+setAdEvent();
+// 先初始化广告插件，再初始化短剧插件
+// FlutterAds 所有的插件保证兼容性，与其他第三方使用时，不保证兼容性
 bool adResult = await FlutterGromoreAds.initAd(
-  "appid",
+  AppConfig.appId,
   useMediation: false,
 );
 if (!adResult) {
   print("初始化穿山甲失败");
   return;
 }
-// 初始化短剧
-// 将从穿山甲下载的配置文件放到 android/app/src/main/assets 目录下，然后调用初始化方法即可
+// 初始化短剧小视频
 bool result = await FlutterAdcontent.init(
-  skitSettingFile: "SDK_Setting_5434881", // 不需要传.json
+  initSkit: true,  // 初始化短剧
+  initVideo: true, // 初始化小视频
+  settingFile: AppConfig.settingFile, // 配置文件，不需要传.json
 );
-print("初始化短剧:$result");
+print("初始化短剧小视频:$result");
+```
+
+- 设置广告监听
+
+> 广告相关的事件都会回调到这里，无论是 GroMore 还是短剧都是
+
+```dart title="example/main.dart"
+/// 设置广告监听
+Future<void> setAdEvent() async {
+  FlutterGromoreAds.onEventListener((event) {
+    // 广告相关的事件都会回调到这里，无论是 GroMore 还是短剧都是
+    print('onEventListener adId:${event.adId} action:${event.action} ');
+    if (event is AdRewardEvent) {
+      // 这里是激励视频的回调
+      print(
+          "onEventListener AdRewardEvent rewardVerify:${event.rewardVerify} rewardType:${event.rewardType}");
+    } else if (event is AdErrorEvent) {
+      print(
+          "onEventListener AdErrorEvent code:${event.errCode} message:${event.errMsg}");
+    }
+  });
+}
 ```
 
 ## 打开短剧页面
