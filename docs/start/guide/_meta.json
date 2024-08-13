@@ -2,8 +2,14 @@
     {
         "type": "dir",
         "name": "gromore",
-        "label": "📖 广告变现-GroMore",
+        "label": "📱 广告变现-GroMore",
         "collapsed": true
+    },
+    {
+        "type": "dir",
+        "name": "adcontent",
+        "label": "🎬 内容输出-短剧小视频",
+        "collapsed": false
     },
     {
         "type": "dir",
@@ -12,10 +18,9 @@
         "collapsed": true
     },
     {
-        "type": "dir",
-        "name": "adcontent",
-        "label": "🎬 内容输出-短剧小视频",
-        "collapsed": true
+        "type": "file",
+        "name": "upgrade",
+        "label": "🚀 插件升级"
     },
     {
         "type": "file",
