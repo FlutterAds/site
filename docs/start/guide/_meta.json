@@ -3,18 +3,21 @@
         "type": "dir",
         "name": "gromore",
         "label": "📱 广告变现-GroMore",
+        "collapsible": true,
         "collapsed": true
     },
     {
         "type": "dir",
         "name": "adcontent",
         "label": "🎬 内容输出-短剧小视频",
-        "collapsed": false
+        "collapsible": true,
+        "collapsed": true
     },
     {
         "type": "dir",
         "name": "adspark",
         "label": "📡 广告监测-AdSpark",
+        "collapsible": true,
         "collapsed": true
     },
     {
