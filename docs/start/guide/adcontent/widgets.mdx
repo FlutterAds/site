@@ -14,9 +14,9 @@ import { normalizeImagePath } from 'rspress/runtime';
 
 > 下面全是纯 Flutter 自定义页面，可通过体验示例应用
 
-|自定义标题|解锁弹窗|推荐剧场|分类搜索|
+|剧场组件|滑滑流组件|详情组件|解锁弹窗|
 |--|--|--|--|
-| <img src={normalizeImagePath('/imgs/adcontent/img_detail_widget.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_detail_reward.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_theater_11.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_theater_12.webp')}/>| 
+| <img src={normalizeImagePath('/imgs/adcontent/img_theater_widget.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_theater_widget2.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_detail_widget.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_detail_reward.webp')}/> | 
 
 ## 短剧组件
 ### 剧场组件
@@ -52,6 +52,12 @@ TheaterWidget(
       ),
   )
 ```
+
+> 不同的频道类型，展示的内容不同，都是用剧场组件类呈现
+
+- `drawChannelTypeRecommend`：推荐（滑滑流）
+- `drawChannelTypeTheater`：剧场
+- `drawChannelTypeRecommendTheater`：短剧：推荐+剧场（滑滑流）
 
 ### 详情组件
 
