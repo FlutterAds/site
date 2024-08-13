@@ -77,31 +77,3 @@ Widget build(BuildContext context) {
 controller.pause();
 controller.resume();
 ```
-
-## 打开小视频原生页面
-
-``` dart {4,13,22} title="example/pages/my_page.dart"
-/// 基本参数与 Widget 基本一致
-// 打开全屏视频
-FlutterAdcontent.showVideoPage(
-      style: VideoDrawParams.drawStyleFullscreen,
-    );
-
-// 打开宫格模式
-FlutterAdcontent.showVideoPage(
-      hideClose: true,
-      hideChannelName: true,
-      hideFollow: true,
-      channelType: VideoDrawParams.drawChannelTypeRecommend,
-      style: VideoDrawParams.drawStyleGrid,
-    );
-
-// 打开双 Feed 流模式
-FlutterAdcontent.showVideoPage(
-      hideClose: false,
-      hideChannelName: true,
-      hideFollow: true,
-      channelType: VideoDrawParams.drawChannelTypeRecommend,
-      style: VideoDrawParams.drawStyleDoubleFeed,
-    );
-```

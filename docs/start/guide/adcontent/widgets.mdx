@@ -19,6 +19,41 @@ import { normalizeImagePath } from 'rspress/runtime';
 | <img src={normalizeImagePath('/imgs/adcontent/img_detail_widget.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_detail_reward.webp')}/> | <img src={normalizeImagePath('/imgs/adcontent/img_theater_11.webp')}/>| <img src={normalizeImagePath('/imgs/adcontent/img_theater_12.webp')}/>| 
 
 ## 短剧组件
+### 剧场组件
+
+``` dart {19,24-25} title="example/pages/drama_detail.dart"
+/// [controller] 视频控制器
+/// [channelType] 顶部频道类型[VideoDrawParams]
+/// [width] View 的宽度
+/// [height] View 的高度
+/// [detailFree] 免费集数
+/// [unlockCount] 解锁集数
+/// [hideTopInfo] 是否隐藏顶部信息
+/// [setTopOffset] 顶部信息偏移
+/// [hideBottomInfo] 是否隐藏底部信息[滑滑流]
+/// [setBottomOffset] 底部信息偏移[滑滑流]
+/// [hideLikeButton] 是否隐藏点赞按钮[滑滑流]
+/// [hideFavorButton] 是否隐藏收藏按钮[滑滑流]
+/// [hideEnter] 是否隐藏进入（下一集）按钮[滑滑流]
+/// [showChangeBtn] 是否显示换一换按钮[剧场]
+TheaterWidget(
+    controller: [播放控制器看下面👇],
+    width: 375,
+    height: 812,
+    channelType: VideoDrawParams.drawChannelTypeRecommend,
+    hideTopInfo: true,
+    setTopOffset: 54,
+    hideBottomInfo: true,
+    theaterListener: TheaterListener(
+        onOpenDetail: (drama) {
+          // 打开短剧详情
+          toDetail(context, drama);
+        },
+      ),
+  )
+```
+
+### 详情组件
 
 ``` dart {19,24-25} title="example/pages/drama_detail.dart"
 /// [controller] 视频控制器
@@ -46,7 +81,7 @@ DramaWidget(
     index: widget.drama.index,
     unlockFlowListener: [解锁流程监听看下面👇],
     videoPlayListener: [播放流程监听看下面👇],
-  ),
+  )
 ```
 
 :::warning{title="💡 小提示"}
@@ -110,6 +145,16 @@ controller.openMoreDialog();
 controller.unLock(2324,2,false);
 ```
 
+## 剧场监听
+
+``` dart {4} title="example/pages/drama_detail.dart"
+TheaterListener(
+    onOpenDetail: (drama) {
+      // 打开短剧详情
+      toDetail(context, drama);
+    },
+  )
+```
 
 ## 解锁流程监听
 
@@ -134,6 +179,7 @@ UnlockFlowListener(
 ```
 
 ### 解锁弹窗自定义
+
 ``` dart {3,8,16} title="example/pages/drama_detail.dart"
 /// 返回上一集
 void backIndex() {
