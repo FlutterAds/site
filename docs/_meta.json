@@ -2,10 +2,10 @@
   {
     "text": "🎯 版本对比",
     "link": "start/vs",
-    "activeMatch": "/vs/"
+    "activeMatch": "vs"
   },
   {
-    "text": "📦 集成指南",
+    "text": "📖 集成指南",
     "items": [
       {
         "text": "📱 广告变现-GroMore",
@@ -20,14 +20,19 @@
         "link": "start/guide/adspark/install"
       },
       {
-        "text": "🚀 插件升级-Pro",
+        "text": "🚀 插件升级",
         "link": "start/guide/upgrade"
+      },
+      {
+        "text": "🔖 更新日志",
+        "link": "start/guide/changelog"
       }
     ]
   },
   {
-    "text": "🔖 更新日志",
-    "link": "start/guide/changelog"
+    "text": "📦 变现插件库",
+    "link": "pub",
+    "activeMatch": "pub"
   },
   {
     "text": "🧑🏻‍💻 与我联系",
