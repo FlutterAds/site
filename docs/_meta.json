@@ -1,8 +1,13 @@
 [
   {
-    "text": "🎯 版本对比",
+    "text": "🎯 产品介绍",
     "link": "start/vs",
     "activeMatch": "vs"
+  },
+  {
+    "text": "📦 插件库",
+    "link": "pub",
+    "activeMatch": "pub"
   },
   {
     "text": "📖 集成指南",
@@ -28,11 +33,6 @@
         "link": "start/guide/changelog"
       }
     ]
-  },
-  {
-    "text": "📦 变现插件库",
-    "link": "pub",
-    "activeMatch": "pub"
   },
   {
     "text": "🧑🏻‍💻 与我联系",
