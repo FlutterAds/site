@@ -53,6 +53,22 @@ FlutterGromoreAds.launchTestTools();
 
 > 卸载掉我的示例或者穿山甲示例 App 即可重新安装。
 
+## 常见问题
 
+- AAPT: statusBarBackground not found
 
+原因是 `tools-release.aar` 有个属性错误，新版 AAPT 没通过检查，覆盖样式即可解决
+
+``` dart title="example/android/src/main/res/values/themes.xml"
+
+<!-- 覆盖掉测试助手报错 statusBarBackground' not found-->
+<style name="BottomDialog">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowIsFloating">false</item>
+    <!-- Remove statusBarBackground -->
+    <item name="android:backgroundDimEnabled">true</item>
+    <item name="android:windowTranslucentStatus">true</item>
+</style>
+```
 
