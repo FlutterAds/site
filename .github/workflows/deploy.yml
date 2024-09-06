@@ -2,7 +2,7 @@ name: Deploy Rspress site to Pages
 
 on:
   push:
-    branches: [master]
+    branches: [pages]
 
   workflow_dispatch:
 
