@@ -207,3 +207,12 @@ bool result = await FlutterGromoreAds.requestIDFA;
 - 按照上方【iOS 引入依赖】或示例中的引入厂商依赖即可解决
 
 :::
+
+:::tip {title="ShrinkProtoResourcesAction ParseError at [row,col]:[1,1]"}
+
+添加一个配置文件即可，参考示例中 `example/android/gradle.properties`
+
+```dart title="example/android/gradle.properties"
+android.enableNewResourceShrinker=false
+```
+:::
