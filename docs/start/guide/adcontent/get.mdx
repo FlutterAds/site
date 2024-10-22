@@ -59,3 +59,19 @@ List<Drama> list = await FlutterAdcontent.requestDramaByCategory(category: categ
 /// [count] 每页个数，不超过20
 List<Drama> list = await FlutterAdcontent.searchDrama(query: "重生", isFuzzy: true);
 ```
+
+## 收藏短剧
+
+``` dart
+/// [id] 短剧id
+/// [state] 更新状态，true 收藏，false 取消收藏
+bool result = await FlutterAdcontent.favorDrama(id,state);
+```
+
+## 收藏列表
+
+``` dart
+/// [page] 页数，从1开始
+/// [count] 每页个数，默认值 20
+List<Drama> list = await FlutterAdcontent.getFavorList(page:1, count:20);
+```
