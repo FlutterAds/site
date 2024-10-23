@@ -93,12 +93,20 @@ DramaWidget(
 :::warning{title="💡 小提示"}
 
  - 要使用组件需修改 Android 启动页面继承 `FlutterFragmentActivity` 
-
+ - Java 版：
 ``` java {2,4} title="example/android/app/src/main/java/com/zero/flutter_adcontent_example/MainActivity.java"
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.android.FlutterFragmentActivity;
 
 public class MainActivity extends FlutterFragmentActivity {
+}
+```
+ - Kotlin 版：
+``` kotlin {2,4} title="example/android/app/src/main/kotlin/com/zero/flutter_adcontent_example/MainActivity.kotlin"
+import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.android.FlutterFragmentActivity;
+
+class MainActivity: FlutterFragmentActivity () {
 }
 ```
 :::
