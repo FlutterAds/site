@@ -16,6 +16,13 @@ export default defineConfig({
     outlineTitle: '目录',
     prevPageText: '上一页',
     nextPageText: '下一页',
+    socialLinks: [
+      {
+        icon: 'github',
+        mode: 'link',
+        content: 'https://github.com/flutterads',
+      },
+    ],
   },
   route: {
     cleanUrls: true,
